@@ -1,8 +1,9 @@
 # HackTheMultiverse 🌐💻
-
 **An Unofficial Retro Cyber-Cinema Parody Mashup**
 
 https://jkbelarmino.github.io/HackTheMultiverse
+
+<img width="500" style="width: 500px; height: auto;" alt="HackTheMultiverse v1" src="https://github.com/user-attachments/assets/eaf54efa-211b-4903-81f5-4fa8ea613f12" />
 
 HackTheMultiverse is a single-file, interactive HTML5 web application inspired by 1990s “Hollywood OS” interfaces and retro cyber-sci-fi cinema.
 
