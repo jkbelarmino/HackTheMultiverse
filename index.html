@@ -1190,7 +1190,7 @@ function advancePlagueWurrdZtar(){
                 <div class="flex flex-col sm:flex-row gap-3">
                     <input id="userNameInput" type="text" placeholder="Enter your real name (e.g. Dade Murphy)"
                            class="bg-black border border-cyber-green/60 text-cyber-green px-4 py-2 rounded focus:outline-none focus:border-cyber-pink font-mono text-sm flex-1">
-                    <button onclick="generateHackerHandle()" class="bg-cyber-green hover:bg-cyber-green/80 text-black font-bold font-orbitron px-5 py-2 rounded transition">
+                    <button type="button" onclick="generateHackerHandle()" class="bg-cyber-green hover:bg-cyber-green/80 text-black font-bold font-orbitron px-5 py-2 rounded transition">
                         GENERATE
                     </button>
                 </div>
@@ -2967,14 +2967,38 @@ function triggerHackThePlanet() {
         }
         function toggleCRT() { const crt = document.getElementById('crtOverlay'); crt.style.display = crt.style.display === 'none' ? 'block' : 'none'; }
         function generateHackerHandle() {
-            const input = document.getElementById('userNameInput').value.trim();
-            if (!input) return;
-            document.getElementById('resHandle').textContent = "ZERO_COOL_" + input.toUpperCase();
-            document.getElementById('resSkates').textContent = "K2 Fatty Pro";
-            document.getElementById('resWeapon').textContent = "28.8k Modem";
-            document.getElementById('resScore').textContent = "9999 PTS";
-            document.getElementById('handleOutput').classList.remove('hidden');
-        }
+    const handles = [
+        "ZERO_COOL", "ACID_BURN", "CRASH_OVERRIDE", "PHANTOM_BYTE",
+        "DARK_AVENGER", "NEON_GHOST", "BYTE_BANDIT", "GLITCH_WIZARD",
+        "ROOT_REAPER", "CHAOS_THEORY", "DIGITAL_SHADOW", "PIXEL_PHREAK",
+        "DATA_VANDAL", "VOID_WALKER", "NULL_POINTER", "SILICON_SPECTRE",
+        "FATAL_ERROR", "STATIC_NINJA", "GHOST_PROTOCOL", "BINARY_REBEL",
+        "CRYPTIC_BYTE", "NIGHT_CRAWLER", "PHREAK_STORM", "SYSTEM_OUTLAW",
+        "NEURAL_NOMAD", "ECHO_ZERO", "BIT_CRUSHER", "CYBER_RONIN",
+        "ROGUE_SIGNAL", "TERMINAL_VELOCITY"
+    ];
+
+    const skates = [
+        "K2 Fatty Pro", "Razor Pro", "Salomon ST-One",
+        "Rollerblade Lightning", "Mission Proto", "Nitro Street"
+    ];
+
+    const weapons = [
+        "Gibson Override", "Packet Storm", "Neural Scrambler",
+        "ICE Breaker", "Daemon Slayer", "Quantum Key",
+        "Black ICE Injector", "Firewall Phantom"
+    ];
+
+    const random = array => array[Math.floor(Math.random() * array.length)];
+
+    document.getElementById("resHandle").textContent = random(handles);
+    document.getElementById("resSkates").textContent = random(skates);
+    document.getElementById("resWeapon").textContent = random(weapons);
+    document.getElementById("resScore").textContent =
+        (Math.floor(Math.random() * 9000) + 1000).toLocaleString();
+
+    document.getElementById("handleOutput").classList.remove("hidden");
+}
         const canvas = document.getElementById('gibsonCanvas'), ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resizeCanvas); resizeCanvas();
