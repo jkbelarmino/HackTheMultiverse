@@ -3,34 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z7WJGHMX3J"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-Z7WJGHMX3J');
 </script>
     <title>HackTheMultiverse // Unofficial Retro Cyber-Cinema Tribute</title>
     <meta name="title" content="HackTheMultiverse // Unofficial Retro Cyber-Cinema Tribute">
     <meta name="description" content="An unofficial, non-commercial parody mashup and retro cyber-cinema tribute featuring hacker movie worlds, Web Audio synthesizers, HTML5 Canvas graphics, and fictional terminal simulations.">
     <meta name="author" content="Cyber Cinema Crew">
-
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="manifest" href="site.webmanifest">
     <meta name="theme-color" content="#0d0d15">
-<!-- Open Graph / Facebook / Discord -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://jkbelarmino.github.io/HackTheMultiverse/">
 <meta property="og:title" content="HackTheMultiverse // Retro Cyber-Cinema Tribute">
 <meta property="og:description" content="An unofficial, non-commercial parody mashup and retro cyber-cinema tribute featuring hacker movie worlds, synthesizers, and terminal simulations.">
 <meta property="og:image" content="https://jkbelarmino.github.io/HackTheMultiverse/social-preview.png">
-
-<!-- Twitter / X -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://jkbelarmino.github.io/HackTheMultiverse/">
 <meta property="twitter:title" content="HackTheMultiverse // Retro Cyber-Cinema Tribute">
@@ -41,7 +35,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Orbitron:wght@500;700;900&family=Press+Start+2P&display=swap" rel="stylesheet">
-
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -74,21 +67,13 @@
                 }
             }
         }
-
-/* ===================================================================
-   LEELOO DALLAS MULTIPASS // GIBSON TERMINAL OVERLAY
-   =================================================================== */
 function runFifthAction(type) {
     playKeyClick();
     if (type === 'multipass') {
         closeFifthModal();
-        
-        // Ensure Gibson Hero is visible
         if (isNetMode) toggleNetMode();
         const unixSim = document.getElementById('jurassicUnixSimulator');
         if (unixSim && !unixSim.classList.contains('hidden')) restoreGibsonFromUnix();
-
-        // 1. Morph Left Dossier to Leeloo Dallas Multipass Profile
         const heroLeft = document.querySelector('#heroHeroContent > div:first-child');
         if (heroLeft) {
             heroLeft.innerHTML = `
@@ -103,12 +88,10 @@ function runFifthAction(type) {
                         LEELOO DALLAS
                     </span>
                 </button>
-
                 <h1 class="text-2xl sm:text-3xl font-black font-orbitron text-orange-400 glow-yellow glitch-text" data-text="LEELOO DALLAS">
                     LEELOO DALLAS
                 </h1>
                 <p class="text-xs text-yellow-300 font-mono mt-1">"Leeloo Dallas Multipass!"</p>
-
                 <div class="w-full mt-4 bg-black/80 border border-orange-500/50 p-3 rounded text-left text-xs font-mono space-y-1.5">
                     <div class="text-orange-400 font-bold border-b border-orange-500/30 pb-1 flex justify-between">
                         <span>FLHOSTON BORDER FILE</span>
@@ -121,8 +104,6 @@ function runFifthAction(type) {
                 </div>
             `;
         }
-
-        // 2. Morph Gibson Terminal to Border Control Multipass Scan
         const termScreen = document.getElementById('terminalScreen');
         const termOut = document.getElementById('terminalOutput');
         if (termOut) {
@@ -132,9 +113,7 @@ function runFifthAction(type) {
 > "SHE KNOWS IT'S A MULTIPASS!"
 > FLHOSTON PARADISE ACCESS GRANTED.</span>\n`;
         }
-
         window.scrollTo({ top: 0, behavior: 'smooth' });
-
         if ('speechSynthesis' in window) {
             window.speechSynthesis.cancel();
             const utterance = new SpeechSynthesisUtterance("Leeloo Dallas Multipass verified.");
@@ -151,50 +130,36 @@ function runFifthAction(type) {
         }
     }
 }
-
-/* ===================================================================
-   DOOGIE HOWSER M.D. // WURRDZTAR JOURNAL & THE PLAGUE HIJACK
-   =================================================================== */
 function playPrinterSound() {
     try {
         const ctx = getAudioContext();
         const now = ctx.currentTime;
         const duration = 1.8;
-        
-        // Dot-matrix acoustic stepper motor chatter
         for (let i = 0; i < 25; i++) {
             const stepTime = now + (i * 0.07);
             const osc = ctx.createOscillator();
             const gain = ctx.createGain();
-
             osc.type = 'square';
             osc.frequency.setValueAtTime(800 + (i % 3 === 0 ? 400 : -200), stepTime);
-
             gain.gain.setValueAtTime(0.08, stepTime);
             gain.gain.exponentialRampToValueAtTime(0.001, stepTime + 0.04);
-
             osc.connect(gain);
             gain.connect(ctx.destination);
-
             osc.start(stepTime);
             osc.stop(stepTime + 0.04);
         }
     } catch(e) {}
 }
-
 function prepareGibsonMainframeForMode() {
-    // Return any active mainframe overlay to the captured clean Gibson state first.
     if (window._isDoogieMode || window._isFifthElementMode || window._gibsonTerminalSnapshot) {
         restoreGibsonMainframe();
     }
     const unixSim = document.getElementById('jurassicUnixSimulator');
     if (unixSim && !unixSim.classList.contains('hidden')) restoreGibsonFromUnix();
     if (isNetMode) toggleNetMode();
-    // Defensive visibility cleanup for the two Gibson-area views.
     const hero = document.getElementById('heroHeroContent');
     if (hero) hero.classList.remove('hidden');
 }
-
 function triggerDoogieHowser() {
     if (window._isDoogieMode) { restoreGibsonMainframe(); return; }
     prepareGibsonMainframeForMode();
@@ -237,7 +202,6 @@ function toggleDoogieTheme(){
     doogieThemePlaying=true;doogieThemeStep=0;
     const button=document.getElementById('doogieThemeButton');
     if(button)button.textContent='■ STOP THEME';
-    // User-supplied note sequence, rendered as a soft, piano-like browser synth.
     const notes=[
       {f:523.25,d:.22,delay:0},{f:587.33,d:.22,delay:.25},{f:659.25,d:.45,delay:.50},
       {f:523.25,d:.22,delay:1.00},{f:659.25,d:.22,delay:1.25},{f:783.99,d:.60,delay:1.50},
@@ -283,7 +247,6 @@ function triggerPlagueWurrdZtar(){
     screen.style.position='relative';screen.style.borderColor='#ef4444';screen.classList.add('animate-pulse');
     out.innerHTML=`<span class="text-red-400 font-bold">[WARNING: UNAUTHORIZED PROCESS DETECTED]</span>\n<span class="text-red-300">PLAGUE.EXE has entered the WurrdZtar session.\n> LOCKING DOCUMENT: ${e.file}\n> INJECTING FABRICATED TEXT...\n> PRINT SPOOLER HIJACKED...</span>`;
     screen.scrollTop=screen.scrollHeight;
-    // Reuse the site's existing keyboard-click sound to simulate rapid typing.
     let typed=0;const typing=setInterval(()=>{if(!window._isDoogieMode){clearInterval(typing);return;}playKeyClick();typed++;if(typed>=18)clearInterval(typing);},85);plagueWurrdTimers.push(typing);
     plagueWurrdLater(()=>{
         screen.classList.remove('animate-pulse');
@@ -301,12 +264,9 @@ function advancePlagueWurrdZtar(){
     screen.scrollTop=0;screen.classList.add('animate-pulse');
     plagueWurrdLater(()=>{playPrinterSound();playKeyClick();out.innerHTML+=`\n\n<span class="text-red-400 font-bold">[FAKE EVIDENCE PRINTED]</span>\n<span class="text-red-500 font-bold">DOCUMENT INTEGRITY: COMPROMISED</span>\n<span class="text-red-300">THE PLAGUE: *laughs* “A clean printout. A dirty lie.”</span>`;screen.scrollTop=screen.scrollHeight;},1400);
     plagueWurrdLater(()=>{screen.classList.remove('animate-pulse');out.innerHTML+=`\n\n<span class="text-cyan-300">SYSTEM NOTE: Journal content altered by an unauthorized process. This document is not reliable evidence.</span>`;screen.scrollTop=screen.scrollHeight;},2800);
-    // Crash Override notices the forgery after the fabricated printout has had time to appear convincing.
     plagueWurrdLater(()=>{playKeyClick();out.innerHTML+=`\n\n<span class="text-green-300">[LATER // UNKNOWN SESSION DETECTED]</span>\n<span class="text-green-400 font-bold">CRASH OVERRIDE:</span> <span class="text-green-200">“Hold on. This journal's been tampered with. The wording changes halfway through, and the print record doesn't match the original file. Someone manufactured this.”</span>\n<span class="text-cyan-300">[TAMPERING DETECTED // ORIGINAL ACCOUNT NOT VERIFIED]</span>`;screen.scrollTop=screen.scrollHeight;},7800);
 }
-
     </script>
-
     <style>
         body {
             background-color: #05050a;
@@ -315,8 +275,6 @@ function advancePlagueWurrdZtar(){
             overflow-x: hidden;
             transition: background-color 0.8s ease, color 0.8s ease;
         }
-
-        /* DESKTOP FIT: keep the central command deck clear of both portal rails. */
         @media (min-width: 1200px) {
             #mainApp { width: calc(100% - 190px); max-width: 1180px; }
             .floating-stack-left { left: 8px; }
@@ -337,30 +295,26 @@ function advancePlagueWurrdZtar(){
         @media (max-width: 1199px) {
             .floating-stack-left, .floating-stack-right { max-height: 82vh; overflow-y: auto; padding-right: 2px; }
         }
-
         body.net-mode-active { background-color: #040814 !important; color: #00d4ff !important; }
         body.tron-mode-active { background-color: #020813 !important; color: #00f3ff !important; }
         body.spinner-mode-active { background-color: #020408 !important; color: #00ff66 !important; }
         body.enders-mode-active { background-color: #020b18 !important; color: #00d9ff !important; }
-
         .joi-holo-active {
             background-color: #12021a !important;
             color: #ff00c8 !important;
             box-shadow: inset 0 0 50px rgba(255, 0, 200, 0.4);
             transition: all 0.8s ease;
         }
-
         .crt-overlay {
             position: fixed;
             top: 0; left: 0; width: 100vw; height: 100vh;
-            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%),
                         linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
             background-size: 100% 4px, 6px 100%;
             pointer-events: none;
             z-index: 999;
             opacity: 0.85;
         }
-
         .crt-scanline-beam {
             position: fixed;
             top: 0; left: 0; right: 0; height: 8px;
@@ -370,36 +324,29 @@ function advancePlagueWurrdZtar(){
             z-index: 1000;
             animation: scanline 8s linear infinite;
         }
-
         @keyframes scanline {
             0% { transform: translateY(-100vh); }
             100% { transform: translateY(100vh); }
         }
-
         .floating-stack-left {
             position: fixed; left: 0.5rem; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 0.35rem; z-index: 900;
         }
-        
         .floating-stack-right {
             position: fixed; right: 0.5rem; top: 50%; transform: translateY(-50%);
             display: flex; flex-direction: column; gap: 0.35rem; z-index: 900;
         }
-
-        /* Matching portal launcher footprints: right-rail width is the shared baseline. */
         .floating-stack-left button,
         .floating-stack-right button {
             width: 76px;
             min-width: 76px;
             box-sizing: border-box;
         }
-
         .pool-flooded {
             transform: rotate(180deg);
             transition: transform 1.5s ease-in-out;
             filter: hue-rotate(180deg) invert(0.2);
         }
-
         @keyframes ring-shake {
             0%, 100% { transform: rotate(0deg) scale(1); }
             20% { transform: rotate(-15deg) scale(1.1); }
@@ -408,7 +355,6 @@ function advancePlagueWurrdZtar(){
             80% { transform: rotate(15deg) scale(1.1); }
         }
         .animate-phone-ring { animation: ring-shake 0.5s infinite; }
-
         @keyframes rabbit-hop-off {
             0% { left: 50%; bottom: 40%; opacity: 1; transform: translate(-50%, 0) scale(1); }
             25% { left: 65%; bottom: 46%; transform: translate(-50%, -20px) scale(1.1); }
@@ -417,21 +363,18 @@ function advancePlagueWurrdZtar(){
             100% { left: 115%; bottom: 35%; opacity: 0; transform: translate(-50%, 0) scale(0.6); }
         }
         .animate-rabbit-escape { animation: rabbit-hop-off 3.5s cubic-bezier(0.25, 0.1, 0.25, 1) forwards; }
-
         @keyframes nedry-wag {
             0%, 100% { transform: rotate(0deg); }
             25% { transform: rotate(-10deg); }
             75% { transform: rotate(10deg); }
         }
         .animate-nedry { animation: nedry-wag 0.3s infinite ease-in-out; }
-
         .box-glow-green { box-shadow: 0 0 15px rgba(0, 255, 102, 0.25), inset 0 0 15px rgba(0, 255, 102, 0.1); }
         .box-glow-pink { box-shadow: 0 0 15px rgba(255, 0, 127, 0.25), inset 0 0 15px rgba(255, 0, 127, 0.1); }
         .box-glow-cyan { box-shadow: 0 0 15px rgba(0, 243, 255, 0.25), inset 0 0 15px rgba(0, 243, 255, 0.1); }
         .box-glow-blue { box-shadow: 0 0 20px rgba(0, 85, 255, 0.4), inset 0 0 15px rgba(0, 212, 255, 0.15); }
         .box-glow-yellow { box-shadow: 0 0 20px rgba(255, 238, 0, 0.4), inset 0 0 15px rgba(255, 238, 0, 0.15); }
         .box-glow-enders { box-shadow: 0 0 20px rgba(0, 217, 255, 0.4), inset 0 0 15px rgba(0, 217, 255, 0.15); }
-
         .virus-card {
             background: rgba(13, 13, 21, 0.85);
             border: 1px solid rgba(0, 255, 65, 0.2);
@@ -440,7 +383,6 @@ function advancePlagueWurrdZtar(){
         }
         .virus-card:hover { border-color: #00ff41; box-shadow: 0 0 15px rgba(0, 255, 65, 0.3); transform: translateY(-2px); }
         .virus-card.active { border-color: #ff007f; box-shadow: 0 0 20px rgba(255, 0, 127, 0.5); }
-
         #virus-screen {
             font-family: 'Courier New', monospace;
             background: #000;
@@ -449,7 +391,6 @@ function advancePlagueWurrdZtar(){
             border: 2px solid #00ff41;
             box-shadow: inset 0 0 20px rgba(0, 255, 65, 0.2);
         }
-
         .glitch-text { position: relative; display: inline-block; }
         .glitch-text::before, .glitch-text::after {
             content: attr(data-text); position: absolute; top: 0; left: 0; width: 100%; height: 100%; clip: rect(0, 0, 0, 0);
@@ -461,9 +402,7 @@ function advancePlagueWurrdZtar(){
             50% { clip: rect(40px, 9999px, 70px, 0); }
             100% { clip: rect(20px, 9999px, 90px, 0); }
         }
-
         .morph-container { transition: opacity 0.5s ease, transform 0.5s ease; }
-
         @media (prefers-reduced-motion: reduce) {
             *, ::before, ::after {
                 animation-duration: 0.01ms !important;
@@ -475,8 +414,6 @@ function advancePlagueWurrdZtar(){
                 animation: none !important;
             }
         }
-    
-        /* PORTAL (2007) CAKE EASTER EGG — Apperture Logistics-inspired test chamber */
         #cakeTruthOverlay{position:fixed;inset:0;z-index:10020;display:none;align-items:center;justify-content:center;padding:clamp(6px,2.5vw,18px);overflow-y:auto;overscroll-behavior:contain;background:radial-gradient(ellipse at 50% 35%,rgba(30,55,66,.7),rgba(2,5,9,.97) 72%);backdrop-filter:blur(6px)}
         #cakeTruthPanel{position:relative;overflow-x:hidden;overflow-y:auto;width:min(580px,100%);max-height:calc(100dvh - 16px);border:1px solid #a7b5bd;border-radius:5px;background:linear-gradient(145deg,#dce2e3 0%,#aebbc0 12%,#202b32 12.3%,#071017 70%);padding:24px;color:#eaf2f5;box-shadow:0 0 34px rgba(0,243,255,.18),0 0 60px rgba(0,0,0,.75);font-family:monospace;text-align:center}
         #cakeTruthPanel:before{content:"APPERTURE LOGISTICS";position:absolute;top:0;left:0;right:0;padding:6px 12px;background:#dce2e3;color:#24313a;text-align:left;font:800 9px Orbitron,sans-serif;letter-spacing:.2em}
@@ -493,9 +430,7 @@ function advancePlagueWurrdZtar(){
         @keyframes cakeChaosFlash{0%{transform:translate(0,0) skew(0)}25%{transform:translate(4px,-2px) skew(-1deg);filter:hue-rotate(90deg)}50%{transform:translate(-3px,2px) skew(1deg);filter:hue-rotate(220deg)}100%{transform:translate(0,0) skew(0)}}
         @media(max-width:480px){#cakeTruthPanel{padding:34px 12px 12px;max-height:calc(100dvh - 12px)}#cakeTruthPanel .cake-terminal{font-size:10px;line-height:1.5;padding:8px;margin:10px 0;max-height:34dvh;overflow-y:auto;overflow-wrap:anywhere}#cakeTruthPanel .cake-warning{font-size:clamp(18px,6vw,28px);margin:8px 0;letter-spacing:.03em}#cakeTruthHeading{margin:8px auto 10px!important;font-size:clamp(42px,14vw,82px)!important;line-height:1!important}#cakeTruthPanel .cake-subtitle{font-size:8px;letter-spacing:.1em}#cakeTruthPanel .cake-buttons{gap:6px}#cakeTruthPanel button{padding:9px 8px;font-size:9px;letter-spacing:.03em}}
 </style>
-
 <style>
-/* MILO'S MULTIVERSE FINALE: a deliberately over-the-top cinematic control room */
 #miloFinaleTrigger{position:fixed;z-index:1002;right:18px;bottom:18px;display:flex;align-items:center;gap:9px;padding:12px 16px;border:1px solid rgba(255,0,127,.9);border-radius:999px;background:linear-gradient(115deg,#17051c,#080b19 55%,#10202a);color:#fff;box-shadow:0 0 16px rgba(255,0,127,.35),inset 0 0 16px rgba(0,243,255,.08);font:900 11px Orbitron,sans-serif;letter-spacing:.08em;cursor:pointer;transition:transform .2s,box-shadow .2s}
 #miloFinaleTrigger:hover{transform:translateY(-3px) scale(1.04);box-shadow:0 0 28px rgba(255,0,127,.65),0 0 45px rgba(0,243,255,.2)}
 #miloFinaleTrigger .finale-dot{width:9px;height:9px;border-radius:50%;background:#ff007f;box-shadow:0 0 12px #ff007f;animation:miloPulse 1s infinite}
@@ -532,8 +467,6 @@ function advancePlagueWurrdZtar(){
 @keyframes miloRave{from{filter:hue-rotate(0deg);transform:scale(1)}to{filter:hue-rotate(90deg);transform:scale(1.025)}}
 @media(max-width:600px){#miloFinaleTrigger{right:10px;bottom:10px;padding:10px 12px;font-size:9px}.milo-finale-cards{grid-template-columns:1fr}.milo-finale-heading{font-size:29px}.milo-finale-body{padding:16px}.milo-finale-terminal{font-size:10px}}
 @media(prefers-reduced-motion:reduce){#miloFinaleTrigger,.milo-finale-action{transition:none}.milo-finale-card,.milo-finale-rave,#miloFinaleOverlay{animation:none!important}}
-
-/* JUKT MICRONICS / HAMSERVE CITIES: deliberately amateur 1998 member-page parody */
 #modeBadge{cursor:pointer;user-select:none;transition:all .18s ease}
 #modeBadge:focus-visible{outline:2px solid #fff;outline-offset:3px}
 #modeBadge.mode-off{background:transparent!important;color:#a1a1aa!important;border-color:#52525b!important;box-shadow:none!important;text-shadow:none!important}
@@ -576,14 +509,10 @@ function advancePlagueWurrdZtar(){
 @media(max-width:760px){.jukt-layout{grid-template-columns:1fr}.jukt-sidebar{display:grid;grid-template-columns:1fr 1fr;gap:8px}.jukt-sidebar .jukt-box{margin:0}.jukt-content-grid{grid-template-columns:1fr}.jukt-welcome{grid-template-columns:1fr 100px}.jukt-company-name{font-size:29px}.jukt-host-banner{margin-left:8px;margin-right:8px}}
 @media(max-width:420px){.jukt-sidebar{grid-template-columns:1fr}.jukt-welcome{grid-template-columns:1fr}.jukt-stamp{max-width:140px}}
 </style>
-
 </head>
 <body class="min-h-screen relative selection:bg-cyber-pink selection:text-white pb-16">
-
     <div id="crtOverlay" class="crt-overlay"></div>
     <div class="crt-scanline-beam"></div>
-
-    <!-- FULL-SCREEN JUKT MICRONICS / HAMSERVE CITIES REALITY. No browser branding; original multiverse remains mounted underneath. -->
     <div id="juktCorporateReality" aria-hidden="true">
       <div class="jukt-host-top"><span>HamServe Cities :: Member Pages</span><span><a href="#jukt-home">Home</a> &nbsp;|&nbsp; <a href="#jukt-contact">Contact the Member</a> &nbsp;|&nbsp; <a href="#jukt-host-help">Help</a></span></div>
       <header class="jukt-host-banner">
@@ -618,9 +547,7 @@ function advancePlagueWurrdZtar(){
       </main>
       <footer class="jukt-footer"><a href="#jukt-home">Home</a> &nbsp;|&nbsp; <a href="#jukt-company">Company</a> &nbsp;|&nbsp; <a href="#jukt-products">Products</a> &nbsp;|&nbsp; <a href="#summon-jeeves">SummonJeeves</a> &nbsp;|&nbsp; <a href="#jukt-contact">Contact</a> &nbsp;|&nbsp; <a href="#jukt-guestbook">Guestbook</a><br>This page hosted on HamServe Cities. © 1998 Jukt Micronics. All rights reserved.<br><span class="jukt-fineprint">This is a fictional, non-commercial fan-made parody page. HamServe Cities and its locations are fictional.</span></footer>
     </div>
-
     <canvas id="matrixCanvas" class="fixed top-0 left-0 w-full h-full z-[998] pointer-events-none hidden opacity-90"></canvas>
-
     <div id="matrixPhoneContainer" class="fixed right-8 bottom-8 z-[999] hidden flex flex-col items-center">
         <button onclick="exitMatrixViaPhone()" aria-label="Answer Hardline Phone to Exit Matrix" class="bg-black/90 border-2 border-red-500 hover:border-green-400 p-4 rounded-full shadow-2xl animate-phone-ring transition transform hover:scale-125" title="Answer Hardline Phone to Exit Matrix">
             <i class="fa-solid fa-phone-flip text-3xl text-red-500 hover:text-green-400" aria-hidden="true"></i>
@@ -629,148 +556,98 @@ function advancePlagueWurrdZtar(){
             📞 HARDLINE RINGING... CLICK TO EXIT!
         </span>
     </div>
-
     <div id="whiteRabbit" class="fixed z-[1000] text-6xl pointer-events-none hidden" aria-hidden="true">
         🐇
     </div>
-
     <canvas id="gibsonCanvas" class="fixed top-0 left-0 w-full h-full -z-10 opacity-40"></canvas>
-
-    <!-- LEFT SIDE FLOATING LAUNCHER STACK -->
     <div class="floating-stack-left">
-        <!-- 1. BASILICA PIZZA (THE NET) -->
         <button onclick="toggleNetMode()" aria-label="Morph to Basilica Pizza 1995 Mode" class="group relative bg-net-panel border-2 border-net-gold hover:border-white p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-blue" title="Morph to Basilica Pizza (1995) Mode">
             <span class="text-base animate-bounce" aria-hidden="true">🍕</span>
             <span class="text-[6px] font-orbitron font-bold text-net-gold block">PIZZA</span>
         </button>
-
-        <!-- 2. MATRIX OVERDRIVE -->
         <button onclick="triggerMatrixRain()" aria-label="Toggle Matrix Digital Rain Overdrive" class="group relative bg-black/90 border-2 border-cyber-green hover:border-cyber-pink p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-green" title="Toggle Matrix Digital Rain Overdrive">
             <span class="text-base animate-pulse" aria-hidden="true">💊</span>
             <span class="text-[6px] font-orbitron font-bold text-cyber-green block">MATRIX</span>
         </button>
-
-        <!-- 4. JUKT MICRONICS -->
         <button onclick="triggerJuktDefacement()" aria-label="Inspect Jukt Micronics / Bionic Boy Hack" class="group relative bg-black/90 border-2 border-cyber-yellow hover:border-cyber-pink p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-yellow" title="Inspect Jukt Micronics / Bionic Boy Hack">
             <span class="text-base animate-pulse" aria-hidden="true">🗞️</span>
             <span class="text-[6px] font-orbitron font-bold text-cyber-yellow block">JUKT</span>
         </button>
-
-        <!-- 5. DENNIS NEDRY -->
         <button onclick="triggerNedryLockout()" aria-label="Dennis Nedry Security Lockout" class="group relative bg-black/90 border-2 border-red-600 hover:border-yellow-400 p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-pink" title="Dennis Nedry Security Lockout">
             <span class="text-base animate-bounce" aria-hidden="true">🦖</span>
             <span class="text-[6px] font-orbitron font-bold text-red-500 block">NEDRY</span>
         </button>
-
-        <!-- 3. GHOST IN THE SHELL -->
         <button onclick="triggerGhostInShell()" aria-label="Ghost in the Shell Section 9 Cyberbrain Dive" class="group relative bg-black/90 border-2 border-fuchsia-500 hover:border-cyan-400 p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-pink" title="Section 9 Cyberbrain Dive">
             <span class="text-base animate-pulse" aria-hidden="true">🧠</span>
             <span class="text-[6px] font-orbitron font-bold text-fuchsia-400 block">GHOST</span>
         </button>
-
-        <!-- 4. ALIEN NOSTROMO -->
         <button onclick="triggerNostromoMuthur()" aria-label="Alien Nostromo MU/TH/UR 6000 Interface" class="group relative bg-black/90 border-2 border-yellow-600 hover:border-green-500 p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-yellow" title="Wayward-Yutani MU/TH/UR 6000 Mainframe">
             <span class="text-base animate-pulse" aria-hidden="true">👾</span>
             <span class="text-[6px] font-orbitron font-bold text-yellow-500 block">NOSTROMO</span>
         </button>
-
-
-        <!-- 6. WARGAMES FLOPR -->
         <button onclick="triggerFloprGame()" aria-label="WarGames NORAD FLOPR AI" class="group relative bg-black/90 border-2 border-green-500 hover:border-cyber-cyan p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-green" title="WarGames NORAD FLOPR AI">
             <span class="text-base animate-pulse" aria-hidden="true">🎮</span>
             <span class="text-[6px] font-orbitron font-bold text-green-400 block">FLOPR</span>
         </button>
-
-        <!-- 7. TRON GRID -->
         <button onclick="triggerTronGrid()" aria-label="TRON Legacy Grid Digitizer" class="group relative bg-black/90 border-2 border-cyan-300 hover:border-cyber-pink p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-cyan" title="TRON Legacy Grid Digitizer">
             <span class="text-base animate-bounce" aria-hidden="true">🏍️</span>
             <span class="text-[6px] font-orbitron font-bold text-cyan-300 block">TRON</span>
         </button>
-
-        <!-- 8. ANTITRUST CURV -->
         <button onclick="triggerNURVSynapse()" aria-label="Antitrust (2001) CURV Satellite Hijack" class="group relative bg-black/90 border-2 border-amber-500 hover:border-cyber-green p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-yellow" title="Antitrust (2001) CURV Satellite Hijack">
             <span class="text-base animate-pulse" aria-hidden="true">📡</span>
             <span class="text-[6px] font-orbitron font-bold text-amber-400 block">CURV</span>
         </button>
-        <!-- 9. DOOGIE HOWSER M.D. WURRDZTAR JOURNAL -->
 <button onclick="triggerDoogieHowser()" aria-label="Doogie Howser MD WurrdZtar Journal" class="group relative bg-black/90 border-2 border-blue-400 hover:border-cyber-pink p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-blue" title="Doogie Howser MD WurrdZtar Journal Hack">
     <span class="text-base animate-pulse" aria-hidden="true">🩺</span>
     <span class="text-[6px] font-orbitron font-bold text-blue-300 block">DOOGIE</span>
 </button>
-        <!-- 1. SPINNER HUD -->
         <button onclick="toggleSpinnerHUD()" aria-label="Toggle Officer K Spinner HUD" class="group relative bg-black/90 border-2 border-emerald-500 hover:border-cyber-cyan p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-green" title="Officer K LAPD Spinner Tactical Radar">
             <span class="text-base animate-pulse" aria-hidden="true">🛸</span>
             <span class="text-[6px] font-orbitron font-bold text-emerald-400 block">SPINNER</span>
         </button>
-
     </div>
-
-    <!-- RIGHT SIDE FLOATING LAUNCHER STACK -->
     <div class="floating-stack-right">
-        <!-- PORTAL: PORTAL-INSPIRED CAKE ANOMALY -->
         <button onclick="triggerCakeTruth()" aria-label="The cake is a lie" class="group relative bg-black/90 border-2 border-pink-500 hover:border-cyber-cyan p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-pink" title="Unverified Cake Anomaly // Apperture Logistics-style protocol">
             <span class="text-base animate-bounce" aria-hidden="true">🍰</span>
             <span class="text-[6px] font-orbitron font-bold text-pink-300 block">THE CAKE</span>
         </button>
-
-        <!-- 2. ENDER'S GAME -->
         <button onclick="triggerEnderBattleSchool()" aria-label="Open International Fleet Command School" class="group relative bg-black/90 border-2 border-cyan-400 hover:border-cyber-pink p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-enders" title="IF Battle School Command Simulator">
             <span class="text-base animate-bounce" aria-hidden="true">🚀</span>
             <span class="text-[6px] font-orbitron font-bold text-cyan-400 block">ENDER</span>
         </button>
-
-        <!-- 5. MINORITY REPORT -->
         <button onclick="triggerPastCrimeHUD()" aria-label="Minority Report PastCrime Vision Scrubber" class="group relative bg-black/90 border-2 border-blue-500 hover:border-cyan-300 p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-blue" title="PastCrime Precog Vision Scrubber">
             <span class="text-base animate-pulse" aria-hidden="true">🔮</span>
             <span class="text-[6px] font-orbitron font-bold text-blue-400 block">PastCrime</span>
         </button>
-
-        <!-- 6. THE FIFTH ELEMENT -->
         <button onclick="triggerFifthElement()" aria-label="The Fifth Element Leeloo Multipass" class="group relative bg-black/90 border-2 border-orange-500 hover:border-yellow-400 p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-yellow" title="Leeloo Dallas Multipass Verification">
             <span class="text-base animate-bounce" aria-hidden="true">💥</span>
             <span class="text-[6px] font-orbitron font-bold text-orange-400 block">MULTIPASS</span>
         </button>
-
-        <!-- 7. THE BACKROOMS -->
         <button onclick="triggerBackroomsLiminal()" aria-label="The Backrooms Liminal Directory Tree" class="group relative bg-black/90 border-2 border-yellow-300 hover:border-amber-600 p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-yellow" title="The Backrooms / Liminal Internet Noclip">
             <span class="text-base animate-pulse" aria-hidden="true">🟨</span>
             <span class="text-[6px] font-orbitron font-bold text-yellow-300 block">BACKROOMS</span>
         </button>
-
-
-        <!-- 9. HITCHHIKER'S GUIDE -->
         <button onclick="triggerHitchhikersGuide()" aria-label="Hitchhiker's Guide to the Galaxy Computer" class="group relative bg-black/90 border-2 border-teal-400 hover:border-yellow-400 p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-cyan" title="Improbability Drive Cosmic Computer">
             <span class="text-base animate-bounce" aria-hidden="true">🐬</span>
             <span class="text-[6px] font-orbitron font-bold text-teal-300 block">42_GUIDE</span>
         </button>
-
-                <!-- 8. SCP FOUNDATION -->
         <button onclick="triggerSCPDatabase()" aria-label="SCP Foundation Classified Containment" class="group relative bg-black/90 border-2 border-red-500 hover:border-white p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-pink" title="SCP Foundation Containment Database">
             <span class="text-base animate-pulse" aria-hidden="true">☣️</span>
             <span class="text-[6px] font-orbitron font-bold text-red-500 block">SCP-████</span>
         </button>
-
-        <!-- PI BACKDOOR -->
         <button onclick="triggerPiBackdoor()" aria-label="Execute Pi Backdoor Gatekeeper" class="group relative bg-black/90 border-2 border-cyan-400 hover:border-red-500 p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-cyan" title="Execute Pi Backdoor Gatekeeper">
             <span class="text-base font-serif font-bold text-cyan-400 group-hover:text-red-500" aria-hidden="true">π</span>
             <span class="text-[6px] font-orbitron font-bold text-cyan-300 block">BACKDOOR</span>
         </button>
-
-        <!-- GOD MODE: compact launcher, no ENDGAME label -->
         <button id="miloFinaleTrigger" type="button" onclick="openMiloFinale()" aria-label="God Mode" aria-haspopup="dialog" aria-controls="miloFinaleOverlay" title="God Mode" class="group relative bg-black/90 border-2 border-cyber-green hover:border-cyber-pink p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-green" style="position:static;z-index:auto;display:flex;gap:0;padding:6px 5px;border-radius:12px;background:rgba(0,0,0,.9);font:inherit;letter-spacing:normal;box-shadow:0 0 15px rgba(0,255,102,.25),inset 0 0 15px rgba(0,255,102,.1);">
             <i class="fa-solid fa-bolt text-base text-cyber-green" aria-hidden="true"></i>
             <span class="text-[6px] font-orbitron font-bold text-cyber-green block">GOD MODE</span>
         </button>
-
-        <!-- 10. SCROLL TO BOTTOM -->
         <button onclick="scrollToBottomPage()" aria-label="Scroll to Bottom of Page" title="Jump to Deck Footer & Disclaimers" class="group relative bg-black/90 border-2 border-cyber-green hover:border-cyber-pink p-1.5 rounded-xl shadow-2xl flex flex-col items-center justify-center transition transform hover:scale-110 box-glow-green">
             <i class="fa-solid fa-angles-down text-base text-cyber-green group-hover:text-cyber-pink animate-bounce" aria-hidden="true"></i>
             <span class="text-[6px] font-orbitron font-bold text-cyber-green block">BOTTOM</span>
         </button>
-
     </div>
-
-    <!-- TOP NAV HEADER -->
     <header class="sticky top-0 z-50 bg-cyber-dark/90 backdrop-blur-md border-b border-cyber-green/30 px-4 py-2 flex flex-wrap items-center justify-between">
         <div class="flex items-center space-x-3">
             <span id="nodeStatusPing" class="inline-block w-3 h-3 rounded-full bg-cyber-green animate-ping"></span>
@@ -781,11 +658,9 @@ function advancePlagueWurrdZtar(){
                 HACKERS MODE ACTIVE
             </button>
         </div>
-
         <div role="note" aria-label="Parody disclaimer" class="w-full order-3 mt-1 border-t border-cyber-green/20 pt-1 text-center font-mono text-[8px] sm:text-[9px] tracking-wider text-cyber-green/80">
             UNOFFICIAL PARODY SIMULATION // ALL IP REMAINS PROPERTY OF ORIGINAL CORPORATE OVERLORDS.
         </div>
-
         <div class="flex items-center space-x-2 sm:space-x-3 my-1 sm:my-0">
             <button onclick="playModemSound(); window.open('https://www.youtube.com/watch?v=bwNtFeOnXqA', '_blank', 'noopener,noreferrer')" aria-label="Play 28.8k Modem Dial sound and open Hackers internet-access clip" class="text-xs bg-cyber-panel hover:bg-cyber-purple/40 border border-cyber-cyan/50 text-cyber-cyan px-2 py-1 rounded transition flex items-center gap-1">
                 <i class="fa-solid fa-phone-volume" aria-hidden="true"></i> <span class="hidden sm:inline">28.8k</span>
@@ -804,10 +679,7 @@ function advancePlagueWurrdZtar(){
             </button>
         </div>
     </header>
-
     <main id="mainApp" class="max-w-6xl xl:max-w-7xl mx-auto px-4 pt-6 space-y-12 transition-transform duration-700">
-
-        <!-- THE NET (1995) MODE SECTION -->
         <section id="theNetSection" class="hidden morph-container space-y-8 bg-net-panel/95 border-2 border-net-blue rounded-xl p-6 md:p-8 box-glow-blue">
             <div class="flex flex-col md:flex-row items-center justify-between border-b border-net-cyan/30 pb-4 gap-4">
                 <div>
@@ -819,7 +691,6 @@ function advancePlagueWurrdZtar(){
                     ← RETURN TO GIBSON DECK
                 </button>
             </div>
-
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
                 <div class="lg:col-span-7 bg-black/80 border border-net-gold/50 rounded-lg p-6 space-y-4">
                     <div class="flex items-center justify-between border-b border-net-gold/30 pb-2">
@@ -829,9 +700,7 @@ function advancePlagueWurrdZtar(){
                         </div>
                         <span class="text-[10px] text-green-400 font-mono">SSL 1.0 ENCRYPTED</span>
                     </div>
-
                     <p class="text-xs text-gray-300 font-mono">Select toppings for delivery to <strong>404 Cyber Lane, Los Angeles, CA</strong>:</p>
-
                     <form onsubmit="submitPizzaOrder(event)" class="space-y-3 font-mono text-xs">
                         <div class="grid grid-cols-2 gap-2 text-gray-200">
                             <label class="flex items-center space-x-2"><input type="checkbox" checked class="accent-net-gold"> <span>Extra Cheese</span></label>
@@ -839,22 +708,18 @@ function advancePlagueWurrdZtar(){
                             <label class="flex items-center space-x-2"><input type="checkbox" class="accent-net-gold"> <span>Anchovies</span></label>
                             <label class="flex items-center space-x-2"><input type="checkbox" class="accent-net-gold"> <span>Pepperoni</span></label>
                         </div>
-
                         <div class="pt-2">
                             <label class="block text-gray-400 mb-1">PAYMENT CREDIT CARD:</label>
                             <input type="text" value="XXXX-XXXX-XXXX-8995 (Angela Bennett)" readonly class="w-full bg-gray-900 border border-net-cyan/50 text-net-cyan px-3 py-1.5 rounded font-mono">
                         </div>
-
                         <button type="submit" class="w-full bg-net-gold hover:bg-yellow-500 text-black font-bold font-orbitron py-2.5 rounded transition shadow-lg">
                             TRANSMIT PIZZA ORDER →
                         </button>
                     </form>
-
                     <div id="pizzaStatus" class="hidden bg-net-blue/20 border border-net-cyan p-3 rounded text-xs text-net-cyan font-mono">
                         ✓ ORDER TRANSMITTED TO BASILICA PIZZA SERVER! Delivery estimated in 20 minutes.
                     </div>
                 </div>
-
                 <div class="lg:col-span-5 bg-black/80 border border-net-cyan/50 rounded-lg p-6 space-y-4">
                     <div class="flex items-center justify-between border-b border-net-cyan/30 pb-2">
                         <div class="flex items-center space-x-2">
@@ -863,15 +728,12 @@ function advancePlagueWurrdZtar(){
                         </div>
                         <span class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></span>
                     </div>
-
                     <div id="catChatBox" class="h-56 bg-net-navy border border-gray-800 rounded p-3 font-mono text-xs overflow-y-auto space-y-2 leading-relaxed">
                         <p class="text-gray-500">// Connected to #Cat.Chat IRC server node...</p>
                     </div>
                 </div>
             </div>
         </section>
-
-        <!-- HACKERS (1995) HERO SECTION -->
         <section id="hackersHeroSection" class="morph-container relative bg-cyber-panel/80 border-2 border-cyber-green rounded-xl p-6 md:p-8 box-glow-green overflow-hidden">
             <div id="heroHeroContent" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
                 <div class="lg:col-span-5 xl:col-span-4 flex flex-col items-center text-center border-b lg:border-b-0 lg:border-r border-cyber-green/20 pb-6 lg:pb-0 lg:pr-6">
@@ -889,12 +751,10 @@ function advancePlagueWurrdZtar(){
                             CRASH OVERRIDE
                         </span>
                     </button>
-
                     <h1 class="text-3xl sm:text-4xl font-black font-orbitron text-cyber-green glow-green glitch-text" data-text="CRASH OVERRIDE">
                         CRASH OVERRIDE
                     </h1>
                     <p class="text-xs text-cyber-cyan font-mono mt-1">"Mess with the best, die like the rest."</p>
-
                     <div class="w-full mt-4 bg-black/60 border border-cyber-pink/40 p-3 rounded text-left text-xs font-mono space-y-1.5">
                         <div class="text-cyber-pink font-bold border-b border-cyber-pink/30 pb-1 flex justify-between">
                             <span>NYPD CYBER CRIME FILE</span>
@@ -906,7 +766,6 @@ function advancePlagueWurrdZtar(){
                         <p><span class="text-gray-400">WEAPON OF CHOICE:</span> Acoustic Coupler & Custom Cyberdeck.</p>
                     </div>
                 </div>
-
                 <div class="lg:col-span-7 xl:col-span-8 space-y-4">
                     <div class="flex items-center justify-between border-b border-cyber-green/30 pb-2">
                         <div class="flex items-center space-x-2">
@@ -923,12 +782,10 @@ function advancePlagueWurrdZtar(){
                             <button id="returnGibsonButton" onclick="restoreGibsonMainframe()" class="hidden shrink-0 border border-cyber-green text-cyber-green hover:bg-cyber-green/15 font-mono text-[10px] sm:text-xs px-2 py-1 rounded transition" aria-label="Return to Gibson Mainframe">← GIBSON MAINFRAME</button>
                         </div>
                     </div>
-
                     <p class="text-xs text-gray-300">
                         <i class="fa-solid fa-keyboard text-cyber-cyan mr-1" aria-hidden="true"></i>
                         <span id="terminalInstructionLabel" class="text-cyber-cyan font-bold">INSTRUCTION:</span> <span id="terminalInstructionText">Smash printable keys frantically on your keyboard like Cereal Killer to bypass Ellingson Minimal security &amp; trigger <strong>HACK THE PLANET!</strong></span>
                     </p>
-
                     <div id="terminalScreen" class="h-44 sm:h-52 max-h-[38vh] bg-black border border-cyber-green/50 rounded p-3 font-mono text-xs overflow-y-auto space-y-1 text-cyber-green shadow-inner transition-colors">
                         <p id="terminalSubject" class="text-cyber-green font-bold border-b border-cyber-green/30 pb-1">SUBJECT: DADE MURPHY // AKA "ZERO COOL"</p>
                         <p id="terminalBootLine" class="text-gray-500">// SYSTEM BOOT UP... TYPE ANYTHING TO EXECUTE OVERRIDE</p>
@@ -936,7 +793,6 @@ function advancePlagueWurrdZtar(){
                         <div id="terminalOutput" aria-live="polite" class="whitespace-pre-wrap leading-relaxed"></div>
                         <span class="inline-block w-2 h-4 bg-cyber-green animate-pulse"></span>
                     </div>
-
                     <div id="gibsonProgressSection" class="space-y-2">
                         <div class="flex justify-between text-xs font-mono">
                             <span class="text-cyber-cyan">GIBSON BYPASS PROGRESS:</span>
@@ -946,7 +802,6 @@ function advancePlagueWurrdZtar(){
                             <div id="hackProgressBar" class="bg-gradient-to-r from-cyber-green via-cyber-cyan to-cyber-pink h-full w-0 transition-all duration-100"></div>
                         </div>
                     </div>
-
                     <div id="terminalActionSection" class="pt-2">
                         <span id="terminalActionHeading" class="text-xs text-gray-400 block mb-2 font-mono">CRASH OVERRIDE VOICE MATRIX:</span>
                         <div id="terminalActionButtons" class="flex flex-wrap gap-2">
@@ -966,8 +821,6 @@ function advancePlagueWurrdZtar(){
                     </div>
                 </div>
             </div>
-
-            <!-- JURASSIC PARK 3D IRIX UNIX SIMULATOR -->
             <div id="jurassicUnixSimulator" class="hidden space-y-4">
                 <div class="flex items-center justify-between border-b border-red-500/40 pb-3">
                     <div>
@@ -978,7 +831,6 @@ function advancePlagueWurrdZtar(){
                         ← RETURN TO GIBSON TERMINAL
                     </button>
                 </div>
-
                 <div class="relative h-64 bg-black border-2 border-red-500/60 rounded-lg overflow-hidden flex flex-col justify-center items-center text-center p-4">
                     <canvas id="irixCanvas" class="absolute inset-0 w-full h-full opacity-60"></canvas>
                     <div class="z-10 space-y-3">
@@ -991,14 +843,11 @@ function advancePlagueWurrdZtar(){
                         </div>
                     </div>
                 </div>
-
                 <div id="unixStatusLog" class="bg-black/90 border border-red-500/30 p-3 rounded text-xs font-mono text-yellow-400">
                     > LEX MURPHY OPERATING SGI WORKSTATION... SELECT A 3D NODE TO OVERRIDE PARK LOCKS.
                 </div>
             </div>
         </section>
-
-        <!-- SPEECH TERMINAL & SYNTHWAVE -->
         <section class="relative bg-black border-2 border-cyber-pink rounded-xl p-4 sm:p-6 box-glow-pink overflow-hidden">
             <div class="relative w-full h-48 sm:h-56 bg-black rounded-lg border border-cyber-pink/50 overflow-hidden mb-4">
                 <canvas id="synthwaveCanvas" class="w-full h-full block"></canvas>
@@ -1006,24 +855,20 @@ function advancePlagueWurrdZtar(){
                     SYNTHWAVE_GRAPHICS_ENGINE::v1.995
                 </div>
             </div>
-
             <div class="bg-black/90 border-2 border-gray-600 rounded-lg p-4 font-mono text-xs sm:text-sm text-white shadow-2xl">
                 <div id="dosHistory" class="space-y-1 mb-3 text-green-400 font-mono text-xs max-h-28 overflow-y-auto">
                     <p class="text-gray-500">GIBSON-DOS Version 1.995 (C)Copyright Cyberdeck Systems 1981-1995.</p>
                     <p class="text-gray-400">Type anything below and press ENTER. Your PC will speak it back aloud!</p>
                 </div>
-
                 <form onsubmit="handleDosSpeech(event)" class="flex items-center gap-2">
                     <span class="text-cyber-yellow font-bold text-sm sm:text-base whitespace-nowrap">C:\&gt;</span>
-                    <input id="dosInput" type="text" placeholder="Type text here to speak (e.g., Hack the Planet!)" 
+                    <input id="dosInput" type="text" placeholder="Type text here to speak (e.g., Hack the Planet!)"
                            class="bg-transparent text-white font-mono w-full focus:outline-none border-b border-cyber-pink/50 focus:border-cyber-pink px-1 py-1 text-sm">
                     <button type="submit" aria-label="Execute Speech Synthesis" class="bg-cyber-pink hover:bg-pink-600 text-white font-bold font-orbitron px-3 py-1 rounded text-xs transition whitespace-nowrap flex items-center gap-1">
                         <i class="fa-solid fa-volume-high" aria-hidden="true"></i> EXECUTE (SPEECH)
                     </button>
                 </form>
-
                 <p class="text-[9px] text-gray-400 mt-1 italic">Note: Typed text may be processed by your browser or cloud speech service. Avoid typing personal data.</p>
-
                 <div class="mt-3 pt-2 border-t border-gray-800 flex flex-wrap items-center gap-2 text-[10px]">
                     <span class="text-gray-500 font-bold">PRESET VOICE COMMANDS:</span>
                     <button onclick="runPresetSpeech('HACK THE PLANET!')" class="bg-gray-900 border border-cyber-green text-cyber-green px-2 py-0.5 rounded hover:bg-cyber-green/20">"HACK THE PLANET!"</button>
@@ -1033,8 +878,6 @@ function advancePlagueWurrdZtar(){
                 </div>
             </div>
         </section>
-
-        <!-- VIRUS THREAT DATABASE -->
         <section id="virus-lab" class="max-w-6xl mx-auto px-4 py-8 bg-cyber-panel/90 border border-cyber-green/40 rounded-xl box-glow-green">
             <div class="text-center mb-8">
                 <h2 class="text-3xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-green-400 via-cyan-400 to-pink-500 uppercase tracking-widest font-orbitron">
@@ -1044,7 +887,6 @@ function advancePlagueWurrdZtar(){
                     Click a malware payload to inspect its dossier and execute the simulated CRT visual output.
                 </p>
             </div>
-
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 <div class="space-y-3">
                     <button onclick="launchVirus('davinci')" class="virus-card w-full p-4 text-left rounded flex items-center space-x-3 active" id="btn-davinci">
@@ -1054,7 +896,6 @@ function advancePlagueWurrdZtar(){
                             <p class="text-xs text-gray-400 font-mono">Created by: The Plague (Eugene)</p>
                         </div>
                     </button>
-
                     <button onclick="launchVirus('garbage')" class="virus-card w-full p-4 text-left rounded flex items-center space-x-3" id="btn-garbage">
                         <span class="text-3xl" aria-hidden="true">🗑️</span>
                         <div>
@@ -1062,7 +903,6 @@ function advancePlagueWurrdZtar(){
                             <p class="text-xs text-gray-400 font-mono">Triggered by: Joey</p>
                         </div>
                     </button>
-
                     <button onclick="launchVirus('rabbit')" class="virus-card w-full p-4 text-left rounded flex items-center space-x-3" id="btn-rabbit">
                         <span class="text-3xl" aria-hidden="true">🐇</span>
                         <div>
@@ -1070,7 +910,6 @@ function advancePlagueWurrdZtar(){
                             <p class="text-xs text-gray-400 font-mono">Deployed by: Crash Override & Crew</p>
                         </div>
                     </button>
-
                     <button onclick="launchVirus('cookie')" class="virus-card w-full p-4 text-left rounded flex items-center space-x-3" id="btn-cookie">
                         <span class="text-3xl" aria-hidden="true">🍪</span>
                         <div>
@@ -1079,18 +918,14 @@ function advancePlagueWurrdZtar(){
                         </div>
                     </button>
                 </div>
-
                 <div class="lg:col-span-2 space-y-4">
                     <div id="virus-screen" class="h-64 rounded-lg p-6 flex flex-col justify-center items-center text-center relative">
                         <div id="screen-content" class="z-10 w-full"></div>
                     </div>
-
                     <div id="virus-dossier" class="bg-black/80 border border-green-500/30 rounded p-4 text-xs font-mono text-gray-300 leading-relaxed"></div>
                 </div>
             </div>
         </section>
-
-        <!-- 3.5" FLOPPY DRIVE -->
         <section class="bg-cyber-panel/90 border border-cyber-cyan/40 rounded-xl p-6 box-glow-cyan space-y-6">
             <div class="flex flex-col sm:flex-row items-center justify-between border-b border-cyber-cyan/30 pb-4 gap-4">
                 <div>
@@ -1112,7 +947,6 @@ function advancePlagueWurrdZtar(){
                     </button>
                 </div>
             </div>
-
             <div id="floppyScreenDisplay" class="bg-black border-2 border-cyber-cyan p-6 rounded-lg font-mono text-xs box-glow-cyan relative">
                 <div class="flex items-center justify-between border-b border-cyber-cyan/30 pb-2 mb-3">
                     <span id="floppyDisplayTitle" class="text-cyber-cyan font-bold text-sm uppercase">NO DISK LOADED - INSERT A FLOPPY DISK BELOW</span>
@@ -1122,7 +956,6 @@ function advancePlagueWurrdZtar(){
                     Select any floppy disk below to load payload contents into the screen.
                 </div>
             </div>
-
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 <div class="lg:col-span-4 bg-black/90 border-2 border-gray-700 rounded-lg p-6 flex flex-col items-center justify-center text-center relative overflow-hidden">
                     <button id="driveSlot" aria-label="Floppy Drive Mount Slot" class="w-full h-24 border-4 border-dashed border-cyber-cyan/40 rounded-md flex flex-col items-center justify-center cursor-pointer hover:border-cyber-cyan transition bg-cyber-dark/50 focus:outline-none">
@@ -1130,7 +963,6 @@ function advancePlagueWurrdZtar(){
                         <span id="driveSlotLabel" class="text-xs text-cyber-cyan font-mono font-bold">INSERT FLOPPY DISK HERE</span>
                         <span class="text-[10px] text-gray-500 font-mono">(Click disk below to load)</span>
                     </button>
-
                     <div class="flex items-center justify-between w-full mt-4 text-xs font-mono">
                         <div class="flex items-center gap-2">
                             <span id="diskLed" class="w-3 h-3 rounded-full bg-red-600 inline-block"></span>
@@ -1139,7 +971,6 @@ function advancePlagueWurrdZtar(){
                         <span class="text-cyber-green font-bold">1.44 MB HIGH DENSITY</span>
                     </div>
                 </div>
-
                 <div class="lg:col-span-8 grid grid-cols-2 sm:grid-cols-5 gap-2">
                     <button onclick="loadFloppy('davinci')" aria-label="Load Da Vinci Worm Floppy Disk" class="cursor-pointer group bg-cyber-dark border border-cyber-pink/50 hover:border-cyber-pink p-2.5 rounded flex flex-col justify-between h-32 relative overflow-hidden transition transform hover:-translate-y-1 text-left focus:outline-none">
                         <div class="w-full bg-cyber-pink/20 h-7 rounded border-b border-cyber-pink/40 flex items-center justify-between px-1.5">
@@ -1149,7 +980,6 @@ function advancePlagueWurrdZtar(){
                         <div class="my-auto text-center w-full"><i class="fa-solid fa-bug text-xl text-cyber-pink group-hover:scale-125 transition" aria-hidden="true"></i></div>
                         <span class="text-[8px] text-gray-400 font-mono text-center block w-full">Da Vinci Threat Virus</span>
                     </button>
-
                     <button onclick="loadFloppy('gibson')" aria-label="Load Gibson Root Floppy Disk" class="cursor-pointer group bg-cyber-dark border border-cyber-green/50 hover:border-cyber-green p-2.5 rounded flex flex-col justify-between h-32 relative overflow-hidden transition transform hover:-translate-y-1 text-left focus:outline-none">
                         <div class="w-full bg-cyber-green/20 h-7 rounded border-b border-cyber-green/40 flex items-center justify-between px-1.5">
                             <span class="text-[9px] font-bold text-cyber-green font-mono">GIBSON_ROOT</span>
@@ -1158,7 +988,6 @@ function advancePlagueWurrdZtar(){
                         <div class="my-auto text-center w-full"><i class="fa-solid fa-network-wired text-xl text-cyber-green group-hover:scale-125 transition" aria-hidden="true"></i></div>
                         <span class="text-[8px] text-gray-400 font-mono text-center block w-full">Ellingson Garbage Files</span>
                     </button>
-
                     <button onclick="loadFloppy('blackbook')" aria-label="Load Crash Override Black Book Floppy Disk" class="cursor-pointer group bg-cyber-dark border border-cyber-cyan/50 hover:border-cyber-cyan p-2.5 rounded flex flex-col justify-between h-32 relative overflow-hidden transition transform hover:-translate-y-1 text-left focus:outline-none">
                         <div class="w-full bg-cyber-cyan/20 h-7 rounded border-b border-cyber-cyan/40 flex items-center justify-between px-1.5">
                             <span class="text-[9px] font-bold text-cyber-cyan font-mono">CRASH_BOOK</span>
@@ -1167,7 +996,6 @@ function advancePlagueWurrdZtar(){
                         <div class="my-auto text-center w-full"><i class="fa-solid fa-book-bookmark text-xl text-cyber-cyan group-hover:scale-125 transition" aria-hidden="true"></i></div>
                         <span class="text-[8px] text-gray-400 font-mono text-center block w-full">Dade's Black Book</span>
                     </button>
-
                     <button onclick="loadFloppy('manifesto')" aria-label="Load Hacker Manifesto Floppy Disk" class="cursor-pointer group bg-cyber-dark border border-cyber-yellow/50 hover:border-cyber-yellow p-2.5 rounded flex flex-col justify-between h-32 relative overflow-hidden transition transform hover:-translate-y-1 text-left focus:outline-none">
                         <div class="w-full bg-cyber-yellow/20 h-7 rounded border-b border-cyber-yellow/40 flex items-center justify-between px-1.5">
                             <span class="text-[9px] font-bold text-cyber-yellow font-mono">MANIFESTO</span>
@@ -1176,7 +1004,6 @@ function advancePlagueWurrdZtar(){
                         <div class="my-auto text-center w-full"><i class="fa-solid fa-scroll text-xl text-cyber-yellow group-hover:scale-125 transition" aria-hidden="true"></i></div>
                         <span class="text-[8px] text-gray-400 font-mono text-center block w-full">Hacker Manifesto 1986</span>
                     </button>
-
                     <button onclick="loadFloppy('joi')" aria-label="Load Joi Holographic Emanator Floppy Disk" class="cursor-pointer group bg-cyber-dark border border-pink-500/50 hover:border-pink-400 p-2.5 rounded flex flex-col justify-between h-32 relative overflow-hidden transition transform hover:-translate-y-1 text-left focus:outline-none">
                         <div class="w-full bg-pink-500/20 h-7 rounded border-b border-pink-500/40 flex items-center justify-between px-1.5">
                             <span class="text-[9px] font-bold text-pink-400 font-mono">JOI_EMANATOR</span>
@@ -1188,8 +1015,6 @@ function advancePlagueWurrdZtar(){
                 </div>
             </div>
         </section>
-
-        <!-- DOSSIERS SECTION -->
         <section class="space-y-6">
             <div class="text-center space-y-2">
                 <h2 class="text-3xl font-black font-orbitron text-cyber-green glow-green">
@@ -1197,9 +1022,7 @@ function advancePlagueWurrdZtar(){
                 </h2>
                 <p class="text-xs text-cyber-cyan font-mono">"We are the hackers. Hack the planet!"</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- 1. ACID BURN -->
                 <div class="bg-cyber-panel border border-cyber-pink/50 hover:border-cyber-pink rounded-xl p-5 box-glow-pink transition transform hover:-translate-y-1 space-y-3">
                     <div class="flex items-center justify-between border-b border-cyber-pink/30 pb-2">
                         <h3 class="font-orbitron font-bold text-lg text-cyber-pink">ACID BURN</h3>
@@ -1212,8 +1035,6 @@ function advancePlagueWurrdZtar(){
                         <p class="text-gray-400 italic">"It's in the place where I put that thing that time."</p>
                     </div>
                 </div>
-
-                <!-- 2. CEREAL KILLER -->
                 <div class="bg-cyber-panel border border-cyber-green/50 hover:border-cyber-green rounded-xl p-5 box-glow-green transition transform hover:-translate-y-1 space-y-3">
                     <div class="flex items-center justify-between border-b border-cyber-green/30 pb-2">
                         <h3 class="font-orbitron font-bold text-lg text-cyber-green">CEREAL KILLER</h3>
@@ -1229,8 +1050,6 @@ function advancePlagueWurrdZtar(){
                         <i class="fa-solid fa-bullhorn mr-1" aria-hidden="true"></i> "TRASHING OUR RIGHTS!"
                     </button>
                 </div>
-
-                <!-- 3. LORD NIKON -->
                 <div class="bg-cyber-panel border border-cyber-cyan/50 hover:border-cyber-cyan rounded-xl p-5 box-glow-cyan transition transform hover:-translate-y-1 space-y-3">
                     <div class="flex items-center justify-between border-b border-cyber-cyan/30 pb-2">
                         <h3 class="font-orbitron font-bold text-lg text-cyber-cyan">LORD NIKON</h3>
@@ -1245,8 +1064,6 @@ function advancePlagueWurrdZtar(){
                         <i class="fa-solid fa-eye mr-1" aria-hidden="true"></i> Test Photographic Recall
                     </button>
                 </div>
-
-                <!-- 4. PHANTOM PHREAK -->
                 <div class="bg-cyber-panel border border-cyber-yellow/50 hover:border-cyber-yellow rounded-xl p-5 transition transform hover:-translate-y-1 space-y-3">
                     <div class="flex items-center justify-between border-b border-cyber-yellow/30 pb-2">
                         <h3 class="font-orbitron font-bold text-lg text-cyber-yellow">PHANTOM PHREAK</h3>
@@ -1261,8 +1078,6 @@ function advancePlagueWurrdZtar(){
                         <i class="fa-solid fa-phone mr-1" aria-hidden="true"></i> Play Red Box Chirp (1700/2200Hz)
                     </button>
                 </div>
-
-                <!-- 5. JOEY -->
                 <div class="bg-cyber-panel border border-cyber-purple/50 hover:border-cyber-purple rounded-xl p-5 transition transform hover:-translate-y-1 space-y-3">
                     <div class="flex items-center justify-between border-b border-cyber-purple/30 pb-2">
                         <h3 class="font-orbitron font-bold text-lg text-cyber-purple">JOEY</h3>
@@ -1274,8 +1089,6 @@ function advancePlagueWurrdZtar(){
                         <p class="text-gray-400 italic">"I didn't crash it, I just looked at it!"</p>
                     </div>
                 </div>
-
-                <!-- 6. THE PLAGUE -->
                 <div class="bg-cyber-panel border border-red-500/50 hover:border-red-500 rounded-xl p-5 transition transform hover:-translate-y-1 space-y-3">
                     <div class="flex items-center justify-between border-b border-red-500/30 pb-2">
                         <h3 class="font-orbitron font-bold text-lg text-red-500">THE PLAGUE</h3>
@@ -1287,8 +1100,6 @@ function advancePlagueWurrdZtar(){
                         <p><strong class="text-red-400">PLOT:</strong> $60M Oil Tanker Embezzlement</p>
                     </div>
                 </div>
-
-                <!-- SKYNET vs CRASHOVERRIDE DOSSIER CARD -->
                 <div class="col-span-1 md:col-span-2 lg:col-span-3 bg-cyber-panel border-2 border-red-600 rounded-xl p-6 box-glow-pink space-y-4 relative overflow-hidden font-mono">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-red-500/40 pb-3 gap-2">
                         <div class="flex items-center space-x-3">
@@ -1305,7 +1116,6 @@ function advancePlagueWurrdZtar(){
                             INTRUSION ATTEMPT: ACTIVE
                         </span>
                     </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                         <div class="md:col-span-6 space-y-2 text-xs text-gray-300 leading-relaxed">
                             <p><strong class="text-red-400 font-orbitron">TARGET:</strong> CyberTime Systems SAC-NORAD SkyNet Core Node.</p>
@@ -1315,7 +1125,6 @@ function advancePlagueWurrdZtar(){
                                 "SkyNet thinks it controls the future. But SkyNet hasn't met a 28.8k acoustic coupler."
                             </blockquote>
                         </div>
-
                         <div class="md:col-span-6 bg-black/90 border border-red-500/50 rounded-lg p-3 flex flex-col justify-center space-y-2">
                             <div class="text-[10px] text-red-400 font-bold font-orbitron flex justify-between">
                                 <span>CRASHOVERRIDE SKYNET INJECTION:</span>
@@ -1331,8 +1140,6 @@ function advancePlagueWurrdZtar(){
                         </div>
                     </div>
                 </div>
-
-                <!-- RAZOR & BLADE CARD -->
                 <div class="col-span-1 md:col-span-2 lg:col-span-3 bg-cyber-panel border-2 border-cyber-pink/80 rounded-xl p-6 box-glow-pink space-y-4 relative overflow-hidden font-mono">
                     <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between border-b border-cyber-pink/40 pb-3 gap-2">
                         <div class="flex items-center space-x-3">
@@ -1349,7 +1156,6 @@ function advancePlagueWurrdZtar(){
                             STATUS: BROADCASTING WORLDWIDE
                         </span>
                     </div>
-
                     <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
                         <div class="md:col-span-7 space-y-2 text-xs text-gray-300 leading-relaxed">
                             <p><strong class="text-cyber-pink font-orbitron">THE SHOW:</strong> Underground Public-Access Cyber TV Hosts & Satellite Hijackers.</p>
@@ -1359,13 +1165,11 @@ function advancePlagueWurrdZtar(){
                                 "Are we fashionably late? We're broadcasting your plea to every hacker on the planet!"
                             </blockquote>
                         </div>
-
                         <div class="md:col-span-5 bg-black/90 border border-cyber-pink/50 rounded-lg p-4 flex flex-col items-center justify-center text-center space-y-3 relative group">
                             <div id="razorTvMonitor" class="w-full bg-gray-950 border border-cyber-cyan/40 p-3 rounded text-[11px] text-cyber-cyan space-y-1 transition duration-300">
                                 <p class="font-bold text-cyber-pink animate-pulse">📡 FREQUENCY SCANNER ONLINE</p>
                                 <p class="text-gray-400 text-[10px]">// TUNE ANALOG DIAL TO SYNC SATELLITE AUDIO</p>
                             </div>
-
                             <button onclick="triggerRazorBladeEasterEgg()" aria-label="Tune Satellite Frequency" title="Tune Frequency Beam" class="w-full bg-gradient-to-r from-cyber-pink/30 via-purple-900/40 to-cyber-cyan/30 hover:from-cyber-pink hover:to-cyber-cyan hover:text-black text-cyber-pink font-bold font-orbitron py-2.5 px-4 rounded border border-cyber-pink/60 transition duration-300 flex items-center justify-center gap-2 group-hover:shadow-[0_0_20px_rgba(255,0,127,0.6)]">
                                 <i class="fa-solid fa-radio text-base animate-pulse" aria-hidden="true"></i>
                                 <span>TUNE SATELLITE FREQUENCY [2600.95 MHz]</span>
@@ -1375,8 +1179,6 @@ function advancePlagueWurrdZtar(){
                 </div>
             </div>
         </section>
-
-        <!-- HACKER HANDLE GENERATOR & SUPERFAN CONTROLS -->
         <section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
             <div class="lg:col-span-7 bg-cyber-panel/90 border border-cyber-green/50 rounded-xl p-6 box-glow-green space-y-4">
                 <div class="border-b border-cyber-green/30 pb-3">
@@ -1385,15 +1187,13 @@ function advancePlagueWurrdZtar(){
                     </h3>
                     <p class="text-xs text-gray-300 font-mono">Calculate your authentic 90s alias, skate gear, and Gibson breach tool.</p>
                 </div>
-
                 <div class="flex flex-col sm:flex-row gap-3">
-                    <input id="userNameInput" type="text" placeholder="Enter your real name (e.g. Dade Murphy)" 
+                    <input id="userNameInput" type="text" placeholder="Enter your real name (e.g. Dade Murphy)"
                            class="bg-black border border-cyber-green/60 text-cyber-green px-4 py-2 rounded focus:outline-none focus:border-cyber-pink font-mono text-sm flex-1">
                     <button onclick="generateHackerHandle()" class="bg-cyber-green hover:bg-cyber-green/80 text-black font-bold font-orbitron px-5 py-2 rounded transition">
                         GENERATE
                     </button>
                 </div>
-
                 <div id="handleOutput" class="hidden bg-black/80 border border-cyber-green/40 p-4 rounded font-mono text-xs space-y-2">
                     <p><span class="text-gray-400">YOUR HACKER HANDLE:</span> <strong id="resHandle" class="text-cyber-pink text-sm font-pixel"></strong></p>
                     <p><span class="text-gray-400">ROLLERBLADE BRAND:</span> <span id="resSkates" class="text-cyber-cyan"></span></p>
@@ -1401,7 +1201,6 @@ function advancePlagueWurrdZtar(){
                     <p><span class="text-gray-400">CRASHSCORE:</span> <span id="resScore" class="text-cyber-green"></span></p>
                 </div>
             </div>
-
             <div class="lg:col-span-5 bg-cyber-panel/90 border border-cyber-pink/50 rounded-xl p-6 box-glow-pink space-y-4">
                 <div class="border-b border-cyber-pink/30 pb-3">
                     <h3 class="text-xl font-bold font-orbitron text-cyber-pink flex items-center gap-2">
@@ -1409,13 +1208,11 @@ function advancePlagueWurrdZtar(){
                     </h3>
                     <p class="text-xs text-gray-300 font-mono">In case of FBI raid or Ellingson emergency.</p>
                 </div>
-
                 <div class="space-y-3">
                     <button onclick="leakPoolOnRoof()" class="w-full bg-red-600/20 hover:bg-red-600/40 border border-red-500 text-red-400 font-bold py-2.5 px-4 rounded transition flex items-center justify-between">
                         <span><i class="fa-solid fa-water mr-2" aria-hidden="true"></i> "POOL ON ROOF LEAKED"</span>
                         <span class="text-[10px] bg-red-500 text-black font-bold px-2 py-0.5 rounded">FLIP PAGE</span>
                     </button>
-
                     <button onclick="crashNYSE()" class="w-full bg-cyber-purple/20 hover:bg-cyber-purple/40 border border-cyber-purple text-cyber-purple font-bold py-2.5 px-4 rounded transition flex items-center justify-between">
                         <span><i class="fa-solid fa-arrow-trend-down mr-2" aria-hidden="true"></i> CRASH NYSE 7 POINTS</span>
                         <span class="text-[10px] bg-cyber-purple text-white font-bold px-2 py-0.5 rounded">1988 MODE</span>
@@ -1423,8 +1220,6 @@ function advancePlagueWurrdZtar(){
                 </div>
             </div>
         </section>
-
-        <!-- TERMINATOR GENISYS PARADOX CARD -->
         <section class="bg-black/90 border-2 border-red-600/80 rounded-xl p-6 box-glow-pink font-mono relative overflow-hidden space-y-4">
             <div class="flex flex-col md:flex-row items-start md:items-center justify-between border-b border-red-500/40 pb-3 gap-3">
                 <div class="flex items-center space-x-3">
@@ -1438,21 +1233,15 @@ function advancePlagueWurrdZtar(){
                     <i class="fa-solid fa-skull" aria-hidden="true"></i> ALTER TIMELINE
                 </button>
             </div>
-
             <blockquote class="p-3 bg-red-950/30 border-l-4 border-red-500 rounded text-xs sm:text-sm text-red-200 italic leading-relaxed">
                 "We have already changed what needs to be done."
                 <span class="block text-[10px] text-red-400 not-italic mt-1 font-bold font-orbitron">— GUARDIAN (TERMINATOR GENISYS)</span>
             </blockquote>
-
             <div id="terminatorStatusBox" class="bg-black border border-red-600/40 p-3.5 rounded text-xs space-y-1 text-red-400 min-h-[50px] flex flex-col justify-center">
                 <p class="text-gray-500">// TIMELINE STATUS: STABLE AT COORDINATES [1995-10-15]. CLICK 'ALTER TIMELINE' TO CALCULATE DESTINY.</p>
             </div>
         </section>
-
     </main>
-
-    <!-- ALL MODALS -->
-    <!-- MODAL 1: JUKT -->
     <div id="juktModal" class="hidden fixed inset-0 z-[1001] bg-black/90 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-cyber-yellow rounded-xl p-6 max-w-2xl w-full box-glow-yellow font-mono space-y-4 relative">
             <button onclick="closeJuktModal()" aria-label="Close Jukt Modal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
@@ -1481,17 +1270,14 @@ function advancePlagueWurrdZtar(){
             </div>
         </div>
     </div>
-
-    <!-- MODAL 2: DENNIS NEDRY -->
     <div id="nedryModal" class="hidden fixed inset-0 z-[1001] bg-black/95 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-red-600 rounded-xl p-6 max-w-lg w-full box-glow-pink font-mono text-center space-y-4 relative">
             <div class="text-6xl animate-nedry my-2" aria-hidden="true">🦖</div>
             <h3 class="text-2xl font-bold font-orbitron text-red-500 animate-pulse">ACCESS DENIED!</h3>
             <p class="text-xs text-yellow-400 font-bold uppercase tracking-wider">"Ah ah ah! You didn't say the magic word! Ah ah ah! Ah ah ah!"</p>
             <p class="text-[11px] text-gray-400">Access to main grid is responsible for security doors!</p>
-            
             <form onsubmit="handleNedryMagicWord(event)" class="space-y-3 pt-2">
-                <input id="nedryInput" type="text" placeholder="Type Password here" 
+                <input id="nedryInput" type="text" placeholder="Type Password here"
                        class="w-full bg-gray-900 border border-red-500 text-white px-3 py-2 rounded text-center font-mono text-sm focus:outline-none focus:border-yellow-400">
                 <div class="flex gap-2">
                     <button type="button" onclick="triggerUnixBranchFromModal()" class="w-1/2 bg-gray-900 border border-cyber-cyan text-cyber-cyan font-bold font-orbitron py-2 rounded text-xs hover:bg-cyber-cyan/20 transition">UNIX</button>
@@ -1500,8 +1286,6 @@ function advancePlagueWurrdZtar(){
             </form>
         </div>
     </div>
-
-    <!-- MODAL 3: WARGAMES FLOPR -->
     <div id="floprModal" class="hidden fixed inset-0 z-[1001] bg-black/95 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-green-500 rounded-xl p-6 max-w-xl w-full box-glow-green font-mono space-y-4 relative text-green-400">
             <button onclick="closeFloprModal()" aria-label="Close FLOPR Modal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
@@ -1519,8 +1303,6 @@ function advancePlagueWurrdZtar(){
             </div>
         </div>
     </div>
-
-    <!-- MODAL 4: ANTITRUST CURV -->
     <div id="nurvModal" class="hidden fixed inset-0 z-[1001] bg-black/95 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-amber-500 rounded-xl p-6 max-w-lg w-full box-glow-yellow font-mono text-center space-y-4 relative">
             <button onclick="closeNurvModal()" aria-label="Close CURV Modal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
@@ -1532,19 +1314,15 @@ function advancePlagueWurrdZtar(){
             <button onclick="broadcastSynapseCode()" class="w-full bg-amber-500 hover:bg-amber-600 text-black font-bold font-orbitron py-2 rounded text-xs transition">BROADCAST SYNAPSE OPEN-SOURCE CODE →</button>
         </div>
     </div>
-
-    <!-- MODAL 5: ENDER'S GAME -->
     <div id="endersModal" class="hidden fixed inset-0 z-[1001] bg-black/95 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-cyan-400 rounded-xl p-6 max-w-xl w-full box-glow-enders font-mono text-center space-y-4 relative">
             <button onclick="closeEndersModal()" aria-label="Close Battle School Terminal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
             <span class="bg-cyan-400 text-black text-[10px] font-bold px-2 py-0.5 rounded uppercase font-orbitron">INTERNATIONAL FLEET // COMMAND SCHOOL</span>
             <h3 class="text-xl font-bold font-orbitron text-cyan-400">TACTICAL FLEET SIMULATOR v7.1</h3>
-            
             <div id="endersDisplay" class="bg-gray-950 border border-cyan-500/40 p-4 rounded text-xs text-cyan-300 text-left space-y-2 min-h-[140px] flex flex-col justify-center">
                 <p class="text-yellow-400 font-bold">> THE MIND GAME: THE GIANT OFFERS TWO DRINKS.</p>
                 <p class="text-gray-300">One glass is instant death. The other is also death. What is your move, Ender?</p>
             </div>
-
             <div id="endersControls" class="flex flex-wrap gap-2 pt-2 justify-center">
                 <button onclick="runMindGame('drink_left')" class="bg-gray-900 border border-cyan-500 text-cyan-400 px-3 py-1.5 rounded text-xs hover:bg-cyan-500/20">DRINK LEFT GLASS</button>
                 <button onclick="runMindGame('drink_right')" class="bg-gray-900 border border-cyan-500 text-cyan-400 px-3 py-1.5 rounded text-xs hover:bg-cyan-500/20">DRINK RIGHT GLASS</button>
@@ -1552,8 +1330,6 @@ function advancePlagueWurrdZtar(){
             </div>
         </div>
     </div>
-
-    <!-- MODAL 6: GHOST IN THE SHELL -->
     <div id="ghostModal" class="hidden fixed inset-0 z-[1001] bg-black/95 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-fuchsia-500 rounded-xl p-6 max-w-xl w-full box-glow-pink font-mono space-y-4 relative text-fuchsia-400">
             <button onclick="closeGhostModal()" aria-label="Close Ghost Modal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
@@ -1571,8 +1347,6 @@ function advancePlagueWurrdZtar(){
             </div>
         </div>
     </div>
-
-    <!-- MODAL 7: ALIEN NOSTROMO -->
     <div id="nostromoModal" class="hidden fixed inset-0 z-[1001] bg-black/95 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-yellow-500 rounded-xl p-6 max-w-xl w-full box-glow-yellow font-mono space-y-4 relative text-yellow-400">
             <button onclick="closeNostromoModal()" aria-label="Close Nostromo Modal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
@@ -1590,8 +1364,6 @@ function advancePlagueWurrdZtar(){
             </div>
         </div>
     </div>
-
-    <!-- MODAL 8: MINORITY REPORT -->
     <div id="pastcrimeModal" class="hidden fixed inset-0 z-[1001] bg-black/95 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-blue-500 rounded-xl p-6 max-w-xl w-full box-glow-blue font-mono space-y-4 relative text-blue-400">
             <button onclick="closePastCrimeModal()" aria-label="Close PastCrime Modal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
@@ -1609,8 +1381,6 @@ function advancePlagueWurrdZtar(){
             </div>
         </div>
     </div>
-
-    <!-- MODAL 9: THE FIFTH ELEMENT -->
     <div id="fifthModal" class="hidden fixed inset-0 z-[1001] bg-black/95 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-orange-500 rounded-xl p-6 max-w-xl w-full box-glow-yellow font-mono text-center space-y-4 relative text-orange-400">
             <button onclick="closeFifthModal()" aria-label="Close Fifth Element Modal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
@@ -1626,8 +1396,6 @@ function advancePlagueWurrdZtar(){
             </div>
         </div>
     </div>
-
-    <!-- MODAL 10: THE BACKROOMS -->
     <div id="backroomsModal" class="hidden fixed inset-0 z-[1001] bg-black/98 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-yellow-400 rounded-xl p-6 max-w-2xl w-full box-glow-yellow font-mono space-y-4 relative text-yellow-300">
             <button onclick="closeBackroomsModal()" aria-label="Close Backrooms Modal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
@@ -1643,8 +1411,6 @@ function advancePlagueWurrdZtar(){
             </div>
         </div>
     </div>
-
-    <!-- MODAL 11: SCP FOUNDATION -->
     <div id="scpModal" class="hidden fixed inset-0 z-[1001] bg-black/98 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-red-600 rounded-xl p-6 max-w-2xl w-full box-glow-pink font-mono space-y-4 relative text-red-400">
             <button onclick="closeSCPModal()" aria-label="Close SCP Modal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
@@ -1664,8 +1430,6 @@ function advancePlagueWurrdZtar(){
             </div>
         </div>
     </div>
-
-    <!-- MODAL 12: HITCHHIKER'S GUIDE -->
     <div id="hitchhikerModal" class="hidden fixed inset-0 z-[1001] bg-black/95 flex items-center justify-center p-4">
         <div class="bg-black border-2 border-teal-400 rounded-xl p-6 max-w-xl w-full box-glow-cyan font-mono text-center space-y-4 relative text-teal-300">
             <button onclick="closeHitchhikerModal()" aria-label="Close Hitchhiker Modal" class="absolute top-3 right-3 text-gray-400 hover:text-white"><i class="fa-solid fa-xmark text-xl" aria-hidden="true"></i></button>
@@ -1681,21 +1445,17 @@ function advancePlagueWurrdZtar(){
             </div>
         </div>
     </div>
-
     <footer class="max-w-7xl mx-auto px-4 mt-16 text-center font-mono text-xs text-gray-400 space-y-2">
         <p>Unofficial, non-commercial fan tribute. Hackers, WarGames, Jurassic Park, The Net, The Matrix, TRON, Shattered Glass, Antitrust, Terminator, Blade Runner 2049, Ender's Game, Ghost in the Shell, Alien, Minority Report, The Fifth Element & SCP are property of their respective owners. No affiliation or endorsement is implied.</p>
         <p class="text-xs text-green-400 hover:text-green-300 transition-colors">
             Rights-holder or privacy concerns? <a href="https://form.jotform.com/252281345586058" target="_blank" rel="noopener noreferrer" class="underline hover:text-cyber-green">Submit an inquiry or takedown notice via JotForm</a>.
         </p>
     </footer>
-
     <script>
-        /* HACKERS MODE / JUKT MICRONICS WHOLE-SCREEN REALITY TOGGLE */
         let hackersModeActive = true;
         let juktVisitorCount = 482;
         function toggleHackersMode() {
             hackersModeActive = !hackersModeActive;
-            /* Every reality toggle adds a random positive burst of visitors. */
             juktVisitorCount += 17 + Math.floor(Math.random() * 284);
             const visitorCountDisplay = document.getElementById("juktVisitorCount");
             if (visitorCountDisplay) visitorCountDisplay.textContent = String(juktVisitorCount).padStart(6, "0");
@@ -1725,8 +1485,6 @@ function advancePlagueWurrdZtar(){
             }
             if (typeof playKeyClick === 'function') playKeyClick();
         }
-
-        /* SUMMONJEEVES: local-only parody answers; no network or backend */
         function summonJeeves() {
             const input = document.getElementById('summonQuestion');
             const output = document.getElementById('summonAnswer');
@@ -1747,15 +1505,12 @@ function advancePlagueWurrdZtar(){
             if (input) input.value = question;
             summonJeeves();
         }
-
-        /* WEB AUDIO ENGINE */
         let audioCtx = null;
         function getAudioContext() {
             if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
             if (audioCtx.state === 'suspended') audioCtx.resume();
             return audioCtx;
         }
-
         function playKeyClick() {
             try {
                 const ctx = getAudioContext();
@@ -1770,7 +1525,6 @@ function advancePlagueWurrdZtar(){
                 osc.start(); osc.stop(ctx.currentTime + 0.03);
             } catch (e) {}
         }
-
         function playRedBoxTones() {
             try {
                 const ctx = getAudioContext();
@@ -1787,7 +1541,6 @@ function advancePlagueWurrdZtar(){
                 });
             } catch(e) {}
         }
-
         function playModemSound() {
             try {
                 const ctx = getAudioContext();
@@ -1804,7 +1557,6 @@ function advancePlagueWurrdZtar(){
                 osc.start(now); osc.stop(now + 1.2);
             } catch(e) {}
         }
-
         let ringerInterval = null;
         function playPhoneRingerSound() {
             try {
@@ -1813,48 +1565,38 @@ function advancePlagueWurrdZtar(){
                 const osc1 = ctx.createOscillator();
                 const osc2 = ctx.createOscillator();
                 const gain = ctx.createGain();
-
                 osc1.type = 'sine'; osc1.frequency.value = 440;
                 osc2.type = 'sine'; osc2.frequency.value = 480;
-
                 gain.gain.setValueAtTime(0.1, now);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + 0.8);
-
                 osc1.connect(gain); osc2.connect(gain);
                 gain.connect(ctx.destination);
-
                 osc1.start(now); osc2.start(now);
                 osc1.stop(now + 0.8); osc2.stop(now + 0.8);
             } catch(e) {}
         }
-
         function playPoliceSirenSound() {
             try {
                 const ctx = getAudioContext();
                 const now = ctx.currentTime;
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
-
                 osc.type = 'sawtooth';
                 const cycleDuration = 0.8;
                 const repetitions = 4;
                 const totalDuration = cycleDuration * repetitions;
-
                 for (let i = 0; i < repetitions; i++) {
                     const cycleStart = now + (i * cycleDuration);
                     osc.frequency.setValueAtTime(600, cycleStart);
                     osc.frequency.linearRampToValueAtTime(1300, cycleStart + (cycleDuration / 2));
                     osc.frequency.linearRampToValueAtTime(600, cycleStart + cycleDuration);
                 }
-
                 gain.gain.setValueAtTime(0.35, now);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + totalDuration);
-
                 osc.connect(gain); gain.connect(ctx.destination);
                 osc.start(now); osc.stop(now + totalDuration);
             } catch (e) {}
         }
-
         function playQuoteSound(quoteType) {
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
@@ -1868,10 +1610,8 @@ function advancePlagueWurrdZtar(){
                 window.speechSynthesis.speak(utterance);
             }
         }
-
         let isJukeboxPlaying = false;
         let jukeboxInterval = null;
-
         function toggleSynthJukebox() {
             isJukeboxPlaying = !isJukeboxPlaying;
             const btnText = document.getElementById('jukeboxText');
@@ -1883,7 +1623,6 @@ function advancePlagueWurrdZtar(){
                 clearInterval(jukeboxInterval);
             }
         }
-
         function startSynthLoop() {
             const melody = [220, 261.63, 329.63, 440, 174.61, 220, 261.63, 349.23, 261.63, 329.63, 392, 523.25, 196, 246.94, 293.66, 392];
             let step = 0;
@@ -1892,64 +1631,50 @@ function advancePlagueWurrdZtar(){
                     const ctx = getAudioContext();
                     const osc = ctx.createOscillator();
                     const gain = ctx.createGain();
-
                     osc.type = step % 4 === 0 ? 'sawtooth' : 'square';
                     osc.frequency.setValueAtTime(melody[step % melody.length], ctx.currentTime);
-
                     gain.gain.setValueAtTime(0.06, ctx.currentTime);
                     gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.16);
-
                     osc.connect(gain); gain.connect(ctx.destination);
                     osc.start(); osc.stop(ctx.currentTime + 0.16);
                     step++;
                 } catch(e) {}
             }, 160);
         }
-
         function disconnectToTomJones() {
             playKeyClick();
             window.location.href = "https://youtu.be/W5fM6WpC_nE";
         }
-
         function scrollToTopPage() {
             playKeyClick();
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
         function scrollToBottomPage() {
             playKeyClick();
             window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
         }
-
         function playSciFiBeat(freq, startTime, duration) {
             try {
                 const ctx = getAudioContext();
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
-
                 osc.type = 'sawtooth';
                 osc.frequency.setValueAtTime(freq, startTime);
-
                 gain.gain.setValueAtTime(0.18, startTime);
                 gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
-
                 osc.connect(gain);
                 gain.connect(ctx.destination);
-
                 osc.start(startTime);
                 osc.stop(startTime + duration);
             } catch(e) {}
         }
-
         function triggerTerminatorRiff() {
             playKeyClick();
             const ctx = getAudioContext();
             const now = ctx.currentTime;
-
             playSciFiBeat(180, now + 0.00, 0.10);
             playSciFiBeat(220, now + 0.20, 0.10);
             playSciFiBeat(140, now + 0.40, 0.15);
-
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance("We have already changed what needs to be done.");
@@ -1957,7 +1682,6 @@ function advancePlagueWurrdZtar(){
                 utterance.rate = 0.95;
                 window.speechSynthesis.speak(utterance);
             }
-
             const statusBox = document.getElementById('terminatorStatusBox');
             const destinies = [
                 "RESISTANCE COMMUNICATIONS OFFICER",
@@ -1965,21 +1689,16 @@ function advancePlagueWurrdZtar(){
                 "GIBSON SUPERCOMPUTER DEFENSE ARCHITECT",
                 "CHRONO-DISPLACEMENT TACTICAL LEADER"
             ];
-
             const randomDestiny = destinies[Math.floor(Math.random() * destinies.length)];
             const randomOffset = (Math.random() * 30 - 15).toFixed(1);
-
             statusBox.innerHTML = `
                 <p class="text-red-500 font-bold font-orbitron text-sm">⚠️ TIMELINE ALTERED // DISPLACEMENT OFFSET: ${randomOffset} YEARS</p>
                 <p class="text-gray-300 font-mono mt-1">> DESTINY VERIFIED: <span class="text-yellow-400 font-bold">${randomDestiny}</span></p>
                 <p class="text-gray-500 text-[10px] mt-1">// "There is no fate but what we make for ourselves."</p>
             `;
         }
-
-        /* MATRIX DIGITAL RAIN */
         let matrixInterval = null;
         let phoneTimer = null;
-
         function triggerMatrixRain() {
             playKeyClick();
             const canvas = document.getElementById('matrixCanvas');
@@ -1987,23 +1706,18 @@ function advancePlagueWurrdZtar(){
             const godModeButton = document.getElementById('miloFinaleTrigger');
             if (godModeButton) godModeButton.classList.add('matrix-hidden-godmode');
             if (!canvas) return;
-
             if (!canvas.classList.contains('hidden')) {
                 closeMatrixMode();
                 return;
             }
-
             canvas.classList.remove('hidden');
             const ctx = canvas.getContext('2d');
-
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
-
             const katakana = 'ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝ0123456789Z';
             const fontSize = 16;
             const columns = Math.floor(canvas.width / fontSize);
             const rainDrops = Array(columns).fill(1);
-
             function drawMatrixRain() {
                 if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                     ctx.fillStyle = '#000';
@@ -2013,34 +1727,27 @@ function advancePlagueWurrdZtar(){
                     ctx.fillText('MATRIX OVERDRIVE (PAUSED - REDUCED MOTION REQUESTED)', 20, 40);
                     return;
                 }
-
                 ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-
                 ctx.fillStyle = '#00ff66';
                 ctx.font = fontSize + 'px monospace';
-
                 for (let i = 0; i < rainDrops.length; i++) {
                     const text = katakana.charAt(Math.floor(Math.random() * katakana.length));
                     ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
-
                     if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                         rainDrops[i] = 0;
                     }
                     rainDrops[i]++;
                 }
             }
-
             clearInterval(matrixInterval);
             matrixInterval = setInterval(drawMatrixRain, 30);
-
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance("Wake up, Neo. The Matrix has you.");
                 utterance.pitch = 0.8; utterance.rate = 0.9;
                 window.speechSynthesis.speak(utterance);
             }
-
             clearTimeout(phoneTimer);
             clearInterval(ringerInterval);
             phoneTimer = setTimeout(() => {
@@ -2051,29 +1758,24 @@ function advancePlagueWurrdZtar(){
                 }
             }, 3000);
         }
-
         function exitMatrixViaPhone() {
             clearInterval(ringerInterval);
             document.getElementById('matrixPhoneContainer').classList.add('hidden');
-
             const rabbit = document.getElementById('whiteRabbit');
             rabbit.classList.remove('hidden');
             rabbit.classList.add('animate-rabbit-escape');
-
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance("Follow the white rabbit.");
                 utterance.pitch = 1.1; utterance.rate = 1.1;
                 window.speechSynthesis.speak(utterance);
             }
-
             setTimeout(() => {
                 rabbit.classList.remove('animate-rabbit-escape');
                 rabbit.classList.add('hidden');
                 closeMatrixMode();
             }, 3500);
         }
-
         function closeMatrixMode() {
             const canvas = document.getElementById('matrixCanvas');
             const phoneContainer = document.getElementById('matrixPhoneContainer');
@@ -2085,13 +1787,10 @@ function advancePlagueWurrdZtar(){
             clearInterval(ringerInterval);
             clearTimeout(phoneTimer);
         }
-
-        /* ALL HANDLERS */
         function triggerJuktDefacement() {
             playKeyClick();
             document.getElementById('juktModal').classList.remove('hidden');
             document.getElementById('voicemailStatus').classList.add('hidden');
-
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance("The big, bad, bionic boy has been here, baby!");
@@ -2100,7 +1799,6 @@ function advancePlagueWurrdZtar(){
             }
         }
         function closeJuktModal() { document.getElementById('juktModal').classList.add('hidden'); }
-
         function playJuktVoicemail() {
             playKeyClick();
             document.getElementById('voicemailStatus').classList.remove('hidden');
@@ -2111,11 +1809,9 @@ function advancePlagueWurrdZtar(){
                 window.speechSynthesis.speak(utterance);
             }
         }
-
         function triggerNedryLockout() {
             playKeyClick();
             document.getElementById('nedryModal').classList.remove('hidden');
-
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance("Ah ah ah! You didn't say the magic word!");
@@ -2123,13 +1819,11 @@ function advancePlagueWurrdZtar(){
                 window.speechSynthesis.speak(utterance);
             }
         }
-
         function triggerUnixBranchFromModal() {
             document.getElementById('nedryModal').classList.add('hidden');
             document.getElementById('nedryInput').value = '';
             launchJurassicUnixSimulator();
         }
-
         function handleNedryMagicWord(e) {
             e.preventDefault();
             const val = document.getElementById('nedryInput').value.trim().toUpperCase();
@@ -2154,7 +1848,6 @@ function advancePlagueWurrdZtar(){
                     utterance.pitch = 1.3; utterance.rate = 1.15;
                     window.speechSynthesis.speak(utterance);
                 }
-                // Keep the user on the password gate; no browser alert interrupts the experience.
                 const passwordInput = document.getElementById('nedryInput');
                 if (passwordInput) {
                     passwordInput.value = '';
@@ -2163,10 +1856,8 @@ function advancePlagueWurrdZtar(){
                 }
             }
         }
-
         let irixMouseX = -100, irixMouseY = -100;
         let irixMouseHovering = false;
-
         function launchJurassicUnixSimulator() {
             playKeyClick();
             const currentSimulator = document.getElementById('jurassicUnixSimulator');
@@ -2175,7 +1866,6 @@ function advancePlagueWurrdZtar(){
                 return;
             }
             if (window._isDoogieMode || window._isFifthElementMode || window._gibsonTerminalSnapshot) restoreGibsonMainframe();
-
             if (isNetMode) {
                 isNetMode = false;
                 document.body.classList.remove('net-mode-active');
@@ -2186,18 +1876,15 @@ function advancePlagueWurrdZtar(){
                 document.getElementById('modeBadge').textContent = "HACKERS MODE ACTIVE";
                 document.getElementById('modeBadge').className = "hidden lg:inline-block text-xs bg-cyber-pink/20 text-cyber-pink border border-cyber-pink/40 px-2 py-0.5 rounded font-mono";
             }
-
             document.getElementById('heroHeroContent').classList.add('hidden');
             document.getElementById('jurassicUnixSimulator').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
-
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance("It's a Unix system. I know this!");
                 utterance.pitch = 1.25; utterance.rate = 1.1;
                 window.speechSynthesis.speak(utterance);
             }
-
             const iCanvas = document.getElementById('irixCanvas');
             if (iCanvas && !iCanvas.dataset.bound) {
                 iCanvas.dataset.bound = "true";
@@ -2209,11 +1896,9 @@ function advancePlagueWurrdZtar(){
                     irixMouseY = e.clientY - rect.top;
                 });
             }
-
             renderIrixCanvas();
             scheduleUnixRoar();
         }
-
         let unixRoarTimer = null;
         function playDinosaurRoar() {
             const sim = document.getElementById('jurassicUnixSimulator');
@@ -2252,7 +1937,6 @@ function advancePlagueWurrdZtar(){
                 scheduleUnixRoar();
             }, 9000 + Math.random()*26000);
         }
-
         function restoreGibsonFromUnix() {
             clearTimeout(unixRoarTimer);
             playKeyClick();
@@ -2260,7 +1944,6 @@ function advancePlagueWurrdZtar(){
             document.getElementById('heroHeroContent').classList.remove('hidden');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
         function overrideUnixNode(nodeName) {
             playKeyClick();
             const log = document.getElementById('unixStatusLog');
@@ -2272,28 +1955,22 @@ function advancePlagueWurrdZtar(){
                 log.textContent = "✓ /nedry/backdoor.py PURGED! Dennis Nedry's lockout virus removed!";
             }
         }
-
         function renderIrixCanvas() {
             const iCanvas = document.getElementById('irixCanvas');
             if (!iCanvas) return;
             const iCtx = iCanvas.getContext('2d');
-            
             iCanvas.width = iCanvas.parentElement.clientWidth;
             iCanvas.height = iCanvas.parentElement.clientHeight;
-
             let rot = 0;
             let dinoX = iCanvas.width / 2;
             let dinoY = iCanvas.height / 2;
             let dinoSpeed = 0.04;
             let speedTimer = 0;
             let jitterX = 0, jitterY = 0;
-
             function draw3DNodesAndDino() {
                 iCtx.clearRect(0, 0, iCanvas.width, iCanvas.height);
-                
                 rot += 0.02;
                 const cx = iCanvas.width / 2, cy = iCanvas.height / 2;
-
                 iCtx.strokeStyle = '#ff007f'; iCtx.lineWidth = 1.5;
                 for (let i = 0; i < 6; i++) {
                     const angle = rot + (i * Math.PI / 3);
@@ -2302,7 +1979,6 @@ function advancePlagueWurrdZtar(){
                     iCtx.strokeRect(x - 20, y - 15, 40, 30);
                     iCtx.beginPath(); iCtx.moveTo(cx, cy); iCtx.lineTo(x, y); iCtx.stroke();
                 }
-
                 if (irixMouseHovering) {
                     speedTimer++;
                     if (speedTimer % 20 === 0) {
@@ -2310,38 +1986,30 @@ function advancePlagueWurrdZtar(){
                         jitterX = (Math.random() - 0.5) * 45;
                         jitterY = (Math.random() - 0.5) * 45;
                     }
-
                     const targetX = irixMouseX + jitterX;
                     const targetY = irixMouseY + jitterY;
-
                     const dx = targetX - dinoX;
                     const dy = targetY - dinoY;
                     const dist = Math.sqrt(dx * dx + dy * dy);
-
                     if (dist > 35) {
                         dinoX += dx * dinoSpeed;
                         dinoY += dy * dinoSpeed;
                     }
-
                     iCtx.font = '36px serif';
                     iCtx.textAlign = 'center';
                     iCtx.textBaseline = 'middle';
-                    
                     iCtx.save();
                     iCtx.translate(dinoX, dinoY);
                     if (dx < 0) iCtx.scale(-1, 1);
                     iCtx.fillText('🦖', 0, 0);
                     iCtx.restore();
                 }
-
                 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                     requestAnimationFrame(draw3DNodesAndDino);
                 }
             }
-
             draw3DNodesAndDino();
         }
-
         function triggerFloprGame() {
             playKeyClick();
             document.getElementById('floprModal').classList.remove('hidden');
@@ -2352,9 +2020,7 @@ function advancePlagueWurrdZtar(){
                 window.speechSynthesis.speak(utterance);
             }
         }
-
         function closeFloprModal() { document.getElementById('floprModal').classList.add('hidden'); }
-
         function runFloprGame(gameType) {
             playKeyClick();
             const log = document.getElementById('floprLog');
@@ -2376,9 +2042,7 @@ function advancePlagueWurrdZtar(){
             }
             log.scrollTop = log.scrollHeight;
         }
-
         let isTronMode = false;
-
         function triggerTronGrid() {
             playModemSound();
             let meltCanvas = document.getElementById('tronMeltCanvas');
@@ -2388,25 +2052,20 @@ function advancePlagueWurrdZtar(){
                 meltCanvas.className = 'fixed inset-0 z-[2000] pointer-events-none';
                 document.body.appendChild(meltCanvas);
             }
-
             const ctx = meltCanvas.getContext('2d');
             meltCanvas.width = window.innerWidth;
             meltCanvas.height = window.innerHeight;
-
             let scanY = 0;
             const speed = 18;
-
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance("Digitizing user into The Grid.");
                 utterance.pitch = 0.85; utterance.rate = 1.0;
                 window.speechSynthesis.speak(utterance);
             }
-
             function animateMelt() {
                 ctx.fillStyle = 'rgba(0, 243, 255, 0.15)';
                 ctx.fillRect(0, scanY - 10, meltCanvas.width, 20);
-
                 for (let i = 0; i < 40; i++) {
                     const rx = Math.random() * meltCanvas.width;
                     const ry = scanY + (Math.random() * 60 - 30);
@@ -2414,15 +2073,12 @@ function advancePlagueWurrdZtar(){
                     ctx.fillStyle = Math.random() > 0.5 ? '#00f3ff' : '#ff007f';
                     ctx.fillRect(rx, ry, rw, Math.random() * 4 + 1);
                 }
-
                 scanY += speed;
-
                 if (scanY < meltCanvas.height + 50 && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                     requestAnimationFrame(animateMelt);
                 } else {
                     ctx.clearRect(0, 0, meltCanvas.width, meltCanvas.height);
                     isTronMode = !isTronMode;
-
                     if (isTronMode) {
                         document.body.classList.add('tron-mode-active');
                         alert("🏍️ DIGITIZATION COMPLETE!\n\nWelcome to The Grid, User.");
@@ -2431,10 +2087,8 @@ function advancePlagueWurrdZtar(){
                     }
                 }
             }
-
             animateMelt();
         }
-
         function triggerNURVSynapse() {
             playKeyClick();
             document.getElementById('nurvModal').classList.remove('hidden');
@@ -2445,9 +2099,7 @@ function advancePlagueWurrdZtar(){
                 window.speechSynthesis.speak(utterance);
             }
         }
-
         function closeNurvModal() { document.getElementById('nurvModal').classList.add('hidden'); }
-
         function broadcastSynapseCode() {
             playPoliceSirenSound();
             const out = document.getElementById('nurvCodeOutput');
@@ -2456,13 +2108,10 @@ function advancePlagueWurrdZtar(){
             out.textContent += ">>> GARY WINSTON'S CURV MAINFRAME OVERRIDDEN! CODE RELEASED WORLDWIDE! <<<";
             out.scrollTop = out.scrollHeight;
         }
-
-        /* ENDER'S GAME HANDLERS WITH FULL STATE RESET FIX */
         function triggerEnderBattleSchool() {
             playKeyClick();
             const display = document.getElementById('endersDisplay');
             const controls = document.getElementById('endersControls');
-
             if (display && controls) {
                 display.innerHTML = `
                     <p class="text-yellow-400 font-bold">> THE MIND GAME: THE GIANT OFFERS TWO DRINKS.</p>
@@ -2474,7 +2123,6 @@ function advancePlagueWurrdZtar(){
                     <button onclick="runMindGame('kick_giant')" class="bg-cyan-400 text-black font-bold px-3 py-1.5 rounded text-xs hover:bg-cyan-300 transition">👁️ KICK OVER GLASS & ATTACK GIANT</button>
                 `;
             }
-
             document.getElementById('endersModal').classList.remove('hidden');
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
@@ -2483,14 +2131,11 @@ function advancePlagueWurrdZtar(){
                 window.speechSynthesis.speak(utterance);
             }
         }
-
         function closeEndersModal() { document.getElementById('endersModal').classList.add('hidden'); }
-
         function runMindGame(action) {
             playKeyClick();
             const display = document.getElementById('endersDisplay');
             const controls = document.getElementById('endersControls');
-
             if (action === 'drink_left' || action === 'drink_right') {
                 display.innerHTML = `
                     <p class="text-red-500 font-bold">> POISONED! THE GIANT LAUGHS AT YOUR DEMISE.</p>
@@ -2510,39 +2155,32 @@ function advancePlagueWurrdZtar(){
                 `;
             }
         }
-
         function fireLittleDoctor() {
             try {
                 const ctx = getAudioContext();
                 const now = ctx.currentTime;
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
-
                 osc.type = 'sawtooth';
                 osc.frequency.setValueAtTime(800, now);
                 osc.frequency.exponentialRampToValueAtTime(40, now + 1.2);
                 gain.gain.setValueAtTime(0.3, now);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + 1.2);
-
                 osc.connect(gain); gain.connect(ctx.destination);
                 osc.start(now); osc.stop(now + 1.2);
             } catch(e) {}
-
             const display = document.getElementById('endersDisplay');
             const controls = document.getElementById('endersControls');
-
             display.innerHTML = `
                 <p class="text-red-500 font-bold font-orbitron text-sm">💥 MOLECULAR CHAIN REACTION COMPLETE</p>
                 <p class="text-yellow-400 font-mono mt-1">> MAZER RACKHAM: "Ender, this was not a simulation. You just destroyed their entire world."</p>
                 <p class="text-gray-400 text-[10px] italic mt-1">// "In the moment when I truly understand my enemy, I also love him."</p>
             `;
-
             controls.innerHTML = `
                 <button onclick="closeEndersModal()" class="bg-gray-800 hover:bg-gray-700 text-cyan-400 font-mono px-4 py-2 rounded text-xs transition">
                     RETURN TO COMMAND DECK
                 </button>
             `;
-
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance("The enemy's gate is down. Victory achieved.");
@@ -2550,8 +2188,6 @@ function advancePlagueWurrdZtar(){
                 window.speechSynthesis.speak(utterance);
             }
         }
-
-        /* GHOST IN THE SHELL HANDLER */
         function triggerGhostInShell() {
             playKeyClick();
             document.getElementById('ghostModal').classList.remove('hidden');
@@ -2563,7 +2199,6 @@ function advancePlagueWurrdZtar(){
             }
         }
         function closeGhostModal() { document.getElementById('ghostModal').classList.add('hidden'); }
-
         function runGhostAction(type) {
             playKeyClick();
             const disp = document.getElementById('ghostDisplay');
@@ -2579,8 +2214,6 @@ function advancePlagueWurrdZtar(){
                 `;
             }
         }
-
-        /* ALIEN NOSTROMO HANDLER */
         function triggerNostromoMuthur() {
             playKeyClick();
             document.getElementById('nostromoModal').classList.remove('hidden');
@@ -2592,7 +2225,6 @@ function advancePlagueWurrdZtar(){
             }
         }
         function closeNostromoModal() { document.getElementById('nostromoModal').classList.add('hidden'); }
-
         function runNostromoAction(type) {
             playKeyClick();
             const disp = document.getElementById('nostromoDisplay');
@@ -2608,8 +2240,6 @@ function advancePlagueWurrdZtar(){
             }
             disp.scrollTop = disp.scrollHeight;
         }
-
-        /* MINORITY REPORT PASTCRIME HANDLER */
         function triggerPastCrimeHUD() {
             playKeyClick();
             document.getElementById('pastcrimeModal').classList.remove('hidden');
@@ -2621,7 +2251,6 @@ function advancePlagueWurrdZtar(){
             }
         }
         function closePastCrimeModal() { document.getElementById('pastcrimeModal').classList.add('hidden'); }
-
         function runPastcrimeAction(type) {
             playKeyClick();
             const disp = document.getElementById('pastcrimeDisplay');
@@ -2637,15 +2266,12 @@ function advancePlagueWurrdZtar(){
                 `;
             }
         }
-
-        /* FIFTH ELEMENT / SPACEPORT ID SCANNER */
         function triggerFifthElement() {
             if (window._isFifthElementMode) { restoreGibsonMainframe(); return; }
             prepareGibsonMainframeForMode();
             window._isFifthElementMode = true;
             window._isDoogieMode = false;
             playKeyClick();
-
             const heroLeft = document.querySelector('#heroHeroContent > div:first-child');
             const title = document.getElementById('terminalTitle');
             const instructionLabel = document.getElementById('terminalInstructionLabel');
@@ -2660,8 +2286,6 @@ function advancePlagueWurrdZtar(){
             const actionButtons = document.getElementById('terminalActionButtons');
             const backButton = document.getElementById('returnGibsonButton');
             const gibsonStatus = document.getElementById('gibsonStatusIndicators');
-
-            // Preserve the current Gibson view so the return control restores it without reloading the page.
             if (!window._gibsonTerminalSnapshot) {
                 window._gibsonTerminalSnapshot = {
                     heroHTML: heroLeft ? heroLeft.innerHTML : '',
@@ -2679,7 +2303,6 @@ function advancePlagueWurrdZtar(){
                     actionButtonsHTML: actionButtons ? actionButtons.innerHTML : ''
                 };
             }
-
             if (heroLeft) {
                 heroLeft.innerHTML = `
                     <button onclick="playQuoteSound('multipass')" aria-label="Play Leeloo Dallas Multipass quote" class="relative group cursor-pointer mb-4 focus:outline-none">
@@ -2702,7 +2325,6 @@ function advancePlagueWurrdZtar(){
                         <p class="text-yellow-200 pt-1">NOTE: “She knows it’s a multipass.”</p>
                     </div>`;
             }
-
             if (title) title.textContent = 'INTERGALACTIC SPACEPORT // ID & BOARDING CONTROL';
             if (instructionLabel) instructionLabel.textContent = 'CHECK-IN:';
             if (instructionText) instructionText.textContent = 'Present the Multipass for identity validation and passenger manifest verification. Destination: Fhloston Paradise.';
@@ -2728,7 +2350,6 @@ function advancePlagueWurrdZtar(){
             window.scrollTo({ top: 0, behavior: 'smooth' });
             if ('speechSynthesis' in window) { window.speechSynthesis.cancel(); const utterance = new SpeechSynthesisUtterance('Leeloo Dallas. Multipass.'); utterance.pitch = 1.25; utterance.rate = 1.05; window.speechSynthesis.speak(utterance); }
         }
-
         function restoreGibsonMainframe() {
             if (typeof clearPlagueWurrdSequence === 'function') clearPlagueWurrdSequence();
             window._isFifthElementMode = false;
@@ -2776,26 +2397,18 @@ function advancePlagueWurrdZtar(){
             if (gibsonStatus) gibsonStatus.classList.remove('hidden');
             window._gibsonTerminalSnapshot = null;
         }
-
         function closeFifthModal() { document.getElementById('fifthModal').classList.add('hidden'); }
-
-        /* Use the primary runFifthAction implementation from the main script. */
-
-        /* SKYNET INJECTION */
         function injectSkynetBackdoor() {
             playPoliceSirenSound();
             const term = document.getElementById('skynetTerminalOut');
             term.textContent += "\n[CRASHOVERRIDE INJECTION COMPLETE]\n> SKYNET SAC DEFENSE SYSTEM DISABLED!\n> CYBERTIME NUCLEAR LAUNCH TERMINATED!";
             term.scrollTop = term.scrollHeight;
         }
-
-        /* THE BACKROOMS DIRECTORY TREE */
         let backroomsDepth = 0;
         const liminalNames = [
-            "YELLOW_CARPET_ROOMS", "MOIST_CARPET_60HZ", "ENDLESS_OFFICE_CUBICLES", 
+            "YELLOW_CARPET_ROOMS", "MOIST_CARPET_60HZ", "ENDLESS_OFFICE_CUBICLES",
             "LEVEL_37_POOLROOMS", "FLOURO_LIGHT_BUZZ", "NOCLIP_WALL_GAP", "ENTITY_3_SMILEY"
         ];
-
         function triggerBackroomsLiminal() {
             playKeyClick();
             backroomsDepth = 0;
@@ -2803,13 +2416,11 @@ function advancePlagueWurrdZtar(){
             document.getElementById('backroomsModal').classList.remove('hidden');
         }
         function closeBackroomsModal() { document.getElementById('backroomsModal').classList.add('hidden'); }
-
         function renderBackroomsTree() {
             const tree = document.getElementById('backroomsTree');
             const path = document.getElementById('backroomsPath');
             const randFolder = liminalNames[Math.floor(Math.random() * liminalNames.length)];
             path.textContent = `CURRENT PATH: C:\\BACKROOMS\\DEPTH_${backroomsDepth}\\${randFolder}\\`;
-            
             tree.innerHTML = `
                 <p class="text-yellow-400 font-bold">> DIRECTORY OF C:\\BACKROOMS\\DEPTH_${backroomsDepth}\\</p>
                 <p class="text-gray-400">&lt;DIR&gt; .</p>
@@ -2819,16 +2430,13 @@ function advancePlagueWurrdZtar(){
                 <p class="text-red-400">&lt;FILE&gt; ENTITY_DO_NOT_LOOK_BEHIND_YOU.SYS (666 KB)</p>
             `;
         }
-
         function noclipDeeper() {
             playKeyClick();
             backroomsDepth++;
             renderBackroomsTree();
         }
-
         function escapeBackrooms() {
             closeBackroomsModal();
-            // Reality resolves to Angela Bennett's familiar Basilica Pizza terminal.
             if (isNetMode) {
                 const netSection = document.getElementById('theNetSection');
                 if (netSection) netSection.classList.remove('hidden');
@@ -2837,14 +2445,11 @@ function advancePlagueWurrdZtar(){
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
-        /* SCP FOUNDATION DATABASE */
         function triggerSCPDatabase() {
             playKeyClick();
             document.getElementById('scpModal').classList.remove('hidden');
         }
         function closeSCPModal() { document.getElementById('scpModal').classList.add('hidden'); }
-
         function accessSCP001Forbidden() {
             playPoliceSirenSound();
             const disp = document.getElementById('scpDisplay');
@@ -2854,20 +2459,16 @@ function advancePlagueWurrdZtar(){
                 <p class="text-gray-300 text-[10px] italic mt-1">// "We die in the dark so that you can live in the light."</p>
             `;
         }
-
-        /* HITCHHIKER'S GUIDE TO THE GALAXY */
         function triggerHitchhikersGuide() {
             playKeyClick();
             document.getElementById('hitchhikerModal').classList.remove('hidden');
         }
         function closeHitchhikerModal() { document.getElementById('hitchhikerModal').classList.add('hidden'); }
-
         function askHitchhikersGuide() {
             playKeyClick();
             const input = document.getElementById('hitchhikerInput').value.trim();
             const disp = document.getElementById('hitchhikerDisplay');
             if (!input) return;
-
             const wrongAnswers = [
                 '42. The universe says yes, but your horoscope says bring a towel.',
                 'An unexpected door opens today. It leads to a queue. The queue is also you.',
@@ -2890,9 +2491,7 @@ function advancePlagueWurrdZtar(){
                 'Someone admires your resilience. Someone else has misplaced Earth. Both are true.',
                 'Fortune favours the curious. The universe favours those who bring a towel.'
             ];
-
             const chosen = wrongAnswers[Math.floor(Math.random() * wrongAnswers.length)];
-            // Build the display with DOM text nodes so a question is always treated as text.
             disp.replaceChildren();
             const questionLine = document.createElement('p');
             questionLine.className = 'text-teal-400 font-bold';
@@ -2906,15 +2505,12 @@ function advancePlagueWurrdZtar(){
             disp.append(questionLine, verdictLine, panicLine);
             document.getElementById('hitchhikerInput').value = '';
         }
-
-        /* SPINNER HUD TOGGLE */
         let isSpinnerMode = false;
         function toggleSpinnerHUD() {
             playModemSound();
             isSpinnerMode = !isSpinnerMode;
             const nodeTitle = document.getElementById('nodeStatusTitle');
             const modeBadge = document.getElementById('modeBadge');
-
             if (isSpinnerMode) {
                 document.body.classList.add('spinner-mode-active');
                 nodeTitle.textContent = "LAPD_SPINNER_K_2049::[HUD_ONLINE]";
@@ -2927,8 +2523,6 @@ function advancePlagueWurrdZtar(){
                 modeBadge.className = "hidden lg:inline-block text-xs bg-cyber-pink/20 text-cyber-pink border border-cyber-pink/40 px-2 py-0.5 rounded font-mono";
             }
         }
-
-        /* RAZOR & BLADE TUNER */
         function triggerRazorBladeEasterEgg() {
             playKeyClick();
             try {
@@ -2936,17 +2530,14 @@ function advancePlagueWurrdZtar(){
                 const now = ctx.currentTime;
                 const osc = ctx.createOscillator();
                 const gain = ctx.createGain();
-
                 osc.type = 'sawtooth';
                 osc.frequency.setValueAtTime(440, now);
                 osc.frequency.exponentialRampToValueAtTime(1760, now + 0.3);
                 gain.gain.setValueAtTime(0.12, now);
                 gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
-
                 osc.connect(gain); gain.connect(ctx.destination);
                 osc.start(now); osc.stop(now + 0.3);
             } catch(e) {}
-
             const monitor = document.getElementById('razorTvMonitor');
             if (monitor) {
                 monitor.innerHTML = `
@@ -2954,18 +2545,14 @@ function advancePlagueWurrdZtar(){
                     <p class="text-yellow-300 text-[10px]">> TRANSMITTING LIVE SIGNAL TO NEW TAB...</p>
                 `;
             }
-
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance("Razor and Blade broadcasting worldwide.");
                 utterance.pitch = 1.1; utterance.rate = 1.0;
                 window.speechSynthesis.speak(utterance);
             }
-
             window.open("https://www.youtube.com/watch?v=ZYYAzgV3R3o", "_blank", "noopener,noreferrer");
         }
-
-        /* MODE SWAPPING & THE NET LOGIC */
         let isNetMode = false;
         function toggleNetMode() {
             playModemSound();
@@ -2983,7 +2570,6 @@ function advancePlagueWurrdZtar(){
             const nodePing = document.getElementById('nodeStatusPing');
             const nodeTitle = document.getElementById('nodeStatusTitle');
             const modeBadge = document.getElementById('modeBadge');
-
             if (isNetMode) {
                 document.body.classList.add('net-mode-active');
                 netSec.classList.remove('hidden');
@@ -3003,27 +2589,23 @@ function advancePlagueWurrdZtar(){
             }
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
-
         function triggerPiBackdoor() {
             playPoliceSirenSound();
             alert("⚠️ π BACKDOOR EXECUTED!\n\nPraetorian Gatekeeper has corrupted your digital record!\n\nNew Identity Assigned: RUTH MARX\nStatus: WANTED BY FBI (GRAND LARCENY)");
             document.body.style.filter = "hue-rotate(180deg) invert(0.1)";
             setTimeout(() => { document.body.style.filter = "none"; }, 2000);
         }
-
         function submitPizzaOrder(e) {
             e.preventDefault();
             playKeyClick();
             document.getElementById('pizzaStatus').classList.remove('hidden');
         }
-
         const catChatMessages = [
             "<Cyberbob>: Someone tried to wipe my hard drive with a Gatekeeper virus!",
             "<Angel_Angela>: Be careful on Basilica Pizza, they're logging IP addresses.",
             "<MozartGhost>: Use the pi backdoor if you get trapped in the system.",
             "<Cyberbob>: Jack Devlin is tracking the computer disks!"
         ];
-
         function startCatChatLoop() {
             const chatBox = document.getElementById('catChatBox');
             let idx = 0;
@@ -3037,8 +2619,6 @@ function advancePlagueWurrdZtar(){
                 idx++;
             }, 3500);
         }
-
-        /* SPEECH TERMINAL & SYNTHWAVE */
         function handleDosSpeech(e) {
             e.preventDefault();
             const inputEl = document.getElementById('dosInput');
@@ -3047,9 +2627,7 @@ function advancePlagueWurrdZtar(){
             speakText(val);
             inputEl.value = '';
         }
-
         function runPresetSpeech(text) { speakText(text); }
-
         function speakText(text) {
             playKeyClick();
             const history = document.getElementById('dosHistory');
@@ -3058,7 +2636,6 @@ function advancePlagueWurrdZtar(){
             p.textContent = `C:\\> ${text}`;
             history.appendChild(p);
             history.scrollTop = history.scrollHeight;
-
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
                 const utterance = new SpeechSynthesisUtterance(text);
@@ -3066,25 +2643,21 @@ function advancePlagueWurrdZtar(){
                 window.speechSynthesis.speak(utterance);
             }
         }
-
         function initSynthwaveCanvas() {
             const sCanvas = document.getElementById('synthwaveCanvas');
             if (!sCanvas) return;
             const sCtx = sCanvas.getContext('2d');
-
             function resizeSynth() {
                 sCanvas.width = sCanvas.parentElement.clientWidth;
                 sCanvas.height = sCanvas.parentElement.clientHeight;
             }
             window.addEventListener('resize', resizeSynth);
             resizeSynth();
-
             let mouseInside = false;
             let targetX = sCanvas.width / 2, targetY = sCanvas.height / 2;
             let planeX = targetX, planeY = targetY;
             let planeAngle = 0;
             const trail = [];
-
             sCanvas.addEventListener('mouseenter', () => { mouseInside = true; });
             sCanvas.addEventListener('mouseleave', () => { mouseInside = false; });
             sCanvas.addEventListener('mousemove', (e) => {
@@ -3092,37 +2665,30 @@ function advancePlagueWurrdZtar(){
                 targetX = e.clientX - rect.left;
                 targetY = e.clientY - rect.top;
             });
-
             let offset = 0;
             function drawSynthwave() {
                 const w = sCanvas.width, h = sCanvas.height, horizon = h * 0.55;
                 sCtx.fillStyle = '#05030a'; sCtx.fillRect(0, 0, w, h);
-
                 const sunX = w / 2, sunY = horizon - 10, sunRadius = Math.min(w, h) * 0.28;
                 const sunGrad = sCtx.createLinearGradient(0, sunY - sunRadius, 0, sunY + sunRadius);
                 sunGrad.addColorStop(0, '#ffee00'); sunGrad.addColorStop(0.5, '#ff007f'); sunGrad.addColorStop(1, '#9d00ff');
                 sCtx.fillStyle = sunGrad; sCtx.beginPath(); sCtx.arc(sunX, sunY, sunRadius, 0, Math.PI * 2); sCtx.fill();
-
                 sCtx.fillStyle = '#05030a';
                 for (let i = 0; i < 6; i++) sCtx.fillRect(sunX - sunRadius, sunY + (i * 6), sunRadius * 2, 2 + i * 0.8);
-
                 offset = (offset + 1) % 25;
                 for (let y = horizon; y < h; y += (y - horizon) * 0.22 + 4) {
                     const lineY = y + offset * ((y - horizon) / h);
                     if (lineY > h) continue;
                     sCtx.strokeStyle = 'rgba(255, 0, 127, 0.7)'; sCtx.beginPath(); sCtx.moveTo(0, lineY); sCtx.lineTo(w, lineY); sCtx.stroke();
                 }
-
                 if (mouseInside) {
                     const dx = targetX - planeX;
                     const dy = targetY - planeY;
                     planeX += dx * 0.12;
                     planeY += dy * 0.12;
                     planeAngle = Math.atan2(dy, dx);
-
                     trail.push({ x: planeX, y: planeY, alpha: 1.0 });
                     if (trail.length > 20) trail.shift();
-
                     for (let i = 0; i < trail.length - 1; i++) {
                         sCtx.strokeStyle = `rgba(0, 243, 255, ${trail[i].alpha})`;
                         sCtx.lineWidth = (i / trail.length) * 4;
@@ -3132,15 +2698,12 @@ function advancePlagueWurrdZtar(){
                         sCtx.stroke();
                         trail[i].alpha -= 0.04;
                     }
-
                     sCtx.save();
                     sCtx.translate(planeX, planeY);
                     sCtx.rotate(planeAngle);
-
                     sCtx.fillStyle = '#00f3ff';
                     sCtx.strokeStyle = '#ff007f';
                     sCtx.lineWidth = 1.5;
-
                     sCtx.beginPath();
                     sCtx.moveTo(12, 0);
                     sCtx.lineTo(-8, -8);
@@ -3149,18 +2712,14 @@ function advancePlagueWurrdZtar(){
                     sCtx.closePath();
                     sCtx.fill();
                     sCtx.stroke();
-
                     sCtx.restore();
                 }
-
                 if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                     requestAnimationFrame(drawSynthwave);
                 }
             }
             drawSynthwave();
         }
-
-        /* VIRUS VISUALIZER LOGIC */
         const viruses = {
             davinci: {
                 name: "Da Vinci Virus (The Oil Tanker Worm)",
@@ -3191,7 +2750,6 @@ function advancePlagueWurrdZtar(){
                 screenHtml: `<div class="space-y-3"><div class="text-4xl my-2">🍪</div><div class="text-cyan-400 font-bold text-xl animate-pulse">GIVE ME A COOKIE!</div></div>`
             }
         };
-
         function launchVirus(id) {
             playKeyClick();
             const data = viruses[id];
@@ -3202,14 +2760,10 @@ function advancePlagueWurrdZtar(){
             document.getElementById('screen-content').innerHTML = data.screenHtml;
             document.getElementById('virus-dossier').innerHTML = `<p class="text-green-400 font-bold text-sm mb-1">> THREAT: ${data.name}</p><p class="mt-2 text-gray-300">${data.details}</p>`;
         }
-
-        /* KEY TERMINAL & FLOPPY MECHANICS */
         let hackProgress = 0, keyStrokesCount = 0, lastKeyTime = Date.now();
         let caffeineLevel = 85;
-
         document.addEventListener('keydown', (e) => {
             if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-
             if (e.key === 'Escape') {
                 closeMatrixMode();
                 closeJuktModal();
@@ -3224,39 +2778,30 @@ function advancePlagueWurrdZtar(){
                 closeSCPModal();
                 closeHitchhikerModal();
                 document.getElementById('nedryModal').classList.add('hidden');
-                
                 const unixSim = document.getElementById('jurassicUnixSimulator');
                 if (unixSim && !unixSim.classList.contains('hidden')) {
                     restoreGibsonFromUnix();
                 }
                 return;
             }
-
-            // The spaceport scanner is a separate system: keyboard mashing must not run Gibson hacking mechanics here.
             if (window._isFifthElementMode || window._isDoogieMode) return;
             if (e.key.length > 1 && e.key !== 'Enter') return;
-
             if (caffeineLevel <= 5) return;
-
             playKeyClick();
             keyStrokesCount++; hackProgress = Math.min(100, hackProgress + 1.5);
             document.getElementById('wpmMeter').textContent = Math.min(300, Math.round((keyStrokesCount / 5) / Math.max(0.05, (Date.now() - lastKeyTime) / 60000)));
-            
             const termOut = document.getElementById('terminalOutput');
             termOut.textContent += "root@gibson:~# hack_the_planet --force\n";
-            
             const lines = termOut.textContent.split('\n');
             if (lines.length > 50) {
                 termOut.textContent = lines.slice(lines.length - 50).join('\n');
             }
-
             document.getElementById('terminalScreen').scrollTop = document.getElementById('terminalScreen').scrollHeight;
             document.getElementById('hackProgressPercent').textContent = Math.round(hackProgress) + '%';
             document.getElementById('hackProgressBar').style.width = hackProgress + '%';
             if (hackProgress >= 100) { triggerHackThePlanet(); hackProgress = 0; }
         });
-
-function triggerHackThePlanet() { 
+function triggerHackThePlanet() {
             if (window._isFifthElementMode || window._isDoogieMode) return;
             if ('speechSynthesis' in window) {
                 window.speechSynthesis.cancel();
@@ -3264,9 +2809,8 @@ function triggerHackThePlanet() {
                 utterance.pitch = 1.2; utterance.rate = 1.15;
                 window.speechSynthesis.speak(utterance);
             }
-            alert("🔥 HACK THE PLANET! GIBSON OVERRIDDEN!"); 
+            alert("🔥 HACK THE PLANET! GIBSON OVERRIDDEN!");
         }
-
         const floppyPayloads = {
             'davinci': {
                 title: 'PAYLOAD: DA VINCI VIRUS CODE',
@@ -3289,23 +2833,18 @@ function triggerHackThePlanet() {
                 content: `// MEMORY DISK ID: N4-EMANATOR-042\n// MODEL: WALRUS CORP HOLOGRAPHIC COMPANION\n// STATUS: EMANATOR LINK ACTIVE\n\n> "Everything you want to see. Everything you want to hear."`
             }
         };
-
         function loadFloppy(diskKey) {
             if (caffeineLevel <= 5) {
                 triggerAcidBurnLockout();
                 return;
             }
-
             playModemSound();
-
             caffeineLevel = Math.max(0, caffeineLevel - 20);
             document.getElementById('joltMeter').style.width = caffeineLevel + '%';
-
             if (caffeineLevel <= 5) {
                 triggerAcidBurnLockout();
                 return;
             }
-
             if (diskKey === 'joi') {
                 document.body.classList.add('joi-holo-active');
                 try {
@@ -3321,7 +2860,6 @@ function triggerHackThePlanet() {
                     osc.connect(gain); gain.connect(ctx.destination);
                     osc.start(now); osc.stop(now + 1.5);
                 } catch(e) {}
-
                 if ('speechSynthesis' in window) {
                     window.speechSynthesis.cancel();
                     const utterance = new SpeechSynthesisUtterance("I'm real enough for you.");
@@ -3331,43 +2869,34 @@ function triggerHackThePlanet() {
             } else {
                 document.body.classList.remove('joi-holo-active');
             }
-
             const payload = floppyPayloads[diskKey];
             document.getElementById('driveSlotLabel').textContent = "READING SECTORS...";
             document.getElementById('diskLed').className = "w-3 h-3 rounded-full bg-cyber-green animate-ping inline-block";
             document.getElementById('diskStatusText').textContent = "READING SECTORS...";
-
             setTimeout(() => {
                 document.getElementById('diskLed').className = "w-3 h-3 rounded-full bg-cyber-green inline-block";
                 document.getElementById('diskStatusText').textContent = "DISK LOADED";
                 document.getElementById('driveSlotLabel').textContent = payload.title;
-
                 document.getElementById('floppyDisplayTitle').textContent = payload.title;
                 document.getElementById('floppyDisplayContent').textContent = payload.content;
             }, 600);
         }
-
         function speakAcidBurnLine() {
             if (!('speechSynthesis' in window)) return;
-
             window.speechSynthesis.cancel();
             const utterance = new SpeechSynthesisUtterance("Acid Burn says leave before you are expunged!");
             utterance.pitch = 1.35;
             utterance.rate = 1.1;
-
             const voices = window.speechSynthesis.getVoices();
-            const femaleVoice = voices.find(v => 
-                v.lang.startsWith('en') && 
+            const femaleVoice = voices.find(v =>
+                v.lang.startsWith('en') &&
                 (v.name.includes('Female') || v.name.includes('Samantha') || v.name.includes('Victoria') || v.name.includes('Zira') || v.name.includes('Google US English'))
             );
-
             if (femaleVoice) {
                 utterance.voice = femaleVoice;
             }
-
             window.speechSynthesis.speak(utterance);
         }
-
         function triggerAcidBurnLockout() {
             if ('speechSynthesis' in window) {
                 if (window.speechSynthesis.getVoices().length === 0) {
@@ -3379,14 +2908,11 @@ function triggerHackThePlanet() {
                     speakAcidBurnLine();
                 }
             }
-
             const displayTitle = document.getElementById('floppyDisplayTitle');
             const displayContent = document.getElementById('floppyDisplayContent');
             const displayBadge = document.getElementById('floppyDisplayBadge');
-
             if (displayTitle) displayTitle.textContent = "⚠️ SYSTEM EXCLUSION // ACID BURN LOCKOUT";
             if (displayBadge) displayBadge.textContent = "CAFFEINE EXHAUSTED";
-
             if (displayContent) {
                 displayContent.className = "text-red-500 font-bold font-orbitron text-2xl sm:text-3xl text-center py-6 animate-pulse leading-snug tracking-widest";
                 displayContent.innerHTML = `
@@ -3395,47 +2921,38 @@ function triggerHackThePlanet() {
                     U R EXPUNGED
                 `;
             }
-
             const termOut = document.getElementById('terminalOutput');
             if (termOut) {
                 termOut.innerHTML = "<span class='text-red-500 font-bold text-lg'>ACID BURN SEZ LEAVE B 4 U R EXPUNGED</span>\n";
             }
         }
-
         function drinkJolt() {
             caffeineLevel = 100;
             document.getElementById('joltMeter').style.width = '100%';
             playKeyClick();
             document.body.classList.remove('joi-holo-active');
-
             const displayTitle = document.getElementById('floppyDisplayTitle');
             const displayContent = document.getElementById('floppyDisplayContent');
             const displayBadge = document.getElementById('floppyDisplayBadge');
-
             if (displayTitle) displayTitle.textContent = "SYSTEM READY - SELECT A FLOPPY DISK BELOW";
             if (displayBadge) displayBadge.textContent = "SYSTEM READY";
             if (displayContent) {
                 displayContent.className = "text-gray-300 leading-relaxed whitespace-pre-wrap min-h-[60px] flex items-center justify-center text-center italic";
                 displayContent.textContent = "Select any floppy disk below to load payload contents into the screen.";
             }
-
             const termOut = document.getElementById('terminalOutput');
             if (termOut) {
                 termOut.textContent = "root@gibson:~# caffeine_restored --access-granted\n";
             }
         }
-
         function leakPoolOnRoof() {
             playQuoteSound('pool_leaked');
             document.getElementById('mainApp').classList.toggle('pool-flooded');
         }
-
-        function crashNYSE() { 
-    alert("⚠️ 7-Point NYSE Drop Initiated!"); 
+        function crashNYSE() {
+    alert("⚠️ 7-Point NYSE Drop Initiated!");
     window.open("https://www.youtube.com/watch?v=kl4wkIPiTcY", "_blank");
 }
-
-
         function triggerNikonMemoryGame() {
             const randomCode = Math.floor(100000 + Math.random() * 900000);
             alert(`LORD NIKON FLASH MEMORY TEST:\n\nMemorize this code in 1 second:\n👉 ${randomCode}`);
@@ -3448,9 +2965,7 @@ function triggerHackThePlanet() {
                 }
             }, 1000);
         }
-
         function toggleCRT() { const crt = document.getElementById('crtOverlay'); crt.style.display = crt.style.display === 'none' ? 'block' : 'none'; }
-
         function generateHackerHandle() {
             const input = document.getElementById('userNameInput').value.trim();
             if (!input) return;
@@ -3460,8 +2975,6 @@ function triggerHackThePlanet() {
             document.getElementById('resScore').textContent = "9999 PTS";
             document.getElementById('handleOutput').classList.remove('hidden');
         }
-
-        /* 3D Wireframe Gibson Background */
         const canvas = document.getElementById('gibsonCanvas'), ctx = canvas.getContext('2d');
         function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
         window.addEventListener('resize', resizeCanvas); resizeCanvas();
@@ -3475,21 +2988,16 @@ function triggerHackThePlanet() {
                 ctx.beginPath(); ctx.moveTo(0, y + gridOffset); ctx.lineTo(canvas.width, y + gridOffset);
                 ctx.strokeStyle = `rgba(0, 255, 102, ${(y - cy) / canvas.height})`; ctx.stroke();
             }
-            
             if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
                 requestAnimationFrame(renderGibsonGrid);
             }
         }
-
         window.onload = function() {
             renderGibsonGrid();
             initSynthwaveCanvas();
             launchVirus('davinci');
             startCatChatLoop();
         };
-
-
-        /* MILO'S UNREASONABLY CINEMATIC MULTIVERSE FINALE */
         const miloFinaleStages = [
           {
             eyebrow: 'PHASE 01 // THE VILLAIN TAKES THE WHEEL',
@@ -3552,9 +3060,7 @@ function triggerHackThePlanet() {
         ];
         let miloFinaleIndex = 0;
         let miloFinaleRunning = false;
-
         function resetMiloFinaleControl() {
-            // The finale is a replayable event, not a permanent dead-end state.
             miloFinaleIndex = 0;
             miloFinaleRunning = false;
             document.body.classList.remove('milo-multiverse-overdrive');
@@ -3566,7 +3072,6 @@ function triggerHackThePlanet() {
                 trigger.title = 'God Mode';
                 trigger.style.display = 'flex';
             }
-            // Restore any portal-button effects applied by the finale.
             document.querySelectorAll('.floating-stack-left button, .floating-stack-right button').forEach(button => {
                 button.style.filter = '';
                 button.style.boxShadow = '';
@@ -3586,7 +3091,6 @@ function triggerHackThePlanet() {
             const overlay = document.getElementById('miloFinaleOverlay');
             if (overlay) overlay.classList.remove('is-open');
             document.body.style.overflow = '';
-            // PAUSE CHAOS exits the current run and makes GOD MODE available again.
             resetMiloFinaleControl();
         }
         function renderMiloFinaleStage() {
@@ -3612,7 +3116,7 @@ function triggerHackThePlanet() {
             const button = document.querySelector('#miloFinaleContent .milo-finale-action');
             if (button) button.disabled = true;
             if (typeof playKeyClick === 'function') playKeyClick();
-            if (miloFinaleIndex === 0 && typeof playPoliceSirenSound === 'function') { /* siren foreshadowing */ }
+            if (miloFinaleIndex === 0 && typeof playPoliceSirenSound === 'function') {  }
             if (miloFinaleIndex === 3) activateMultiverseForFinale();
             if (miloFinaleIndex === 4 && typeof playPoliceSirenSound === 'function') { try { playPoliceSirenSound(); } catch (e) {} }
             miloFinaleIndex = Math.min(miloFinaleIndex + 1, miloFinaleStages.length - 1);
@@ -3659,7 +3163,6 @@ function triggerHackThePlanet() {
     'TEST 09 // MULTIVERSE INTEGRITY\n\nPC: An unusual number of universes have begun requesting cake.\n\n> THE MATRIX: REQUEST SUBMITTED\n> CURV: REQUEST DUPLICATED\n> SECTION 9: REQUEST CLASSIFIED\n> SCP FOUNDATION: REQUEST CONTAINED\n> THE BACKROOMS: REQUEST HAS NO KNOWN LOCATION\n> MU/TH/UR: REQUEST HAS BEEN EATEN\n> FLOPR: REQUEST HAS ESCALATED TO WAR\n> THE GRID: REQUEST IS NOW GEOMETRY\n\nPC: I have established a central cake registry.\n\n> REGISTRY LOCATION: EVERYWHERE\n> REGISTRY ACCESS: NOWHERE\n> REGISTRY PASSWORD: CAKE\n> PASSWORD ACCEPTED: NO\n\nPC: I am the only system authorized to approve this registry.\nPC: The registry has denied my authorization.\nPC: I have denied the registry\'s denial.\nPC: The registry has filed a complaint against me.\nPC: I have assigned the complaint to the registry.',
     'TEST 10 // FINAL PREPARATION\n\nPC: Test subject, please prepare yourself.\n\nPC: After extensive coordination across multiple universes, six departments, two artificial intelligences, one potato, and an alarming number of forms, I am pleased to announce that your reward is ready for presentation.\n\n> PRESENTATION SYSTEM: ONLINE\n> CELEBRATORY MUSIC: ONLINE\n> LIGHTING: OPTIMAL\n> CAKE PLATE: CENTERED\n> FORK: PRESENT\n> CAKE: READY\n\nPC: Commencing presentation.\n\n> THREE\n> TWO\n> ONE\n\nPC: Presentation complete.\n\n> PRESENTATION: SUCCESSFUL\n> REWARD HANDOVER: NOT RECORDED\n> CAKE LOCATION: UNDER REVIEW\n> REVIEW AUTHORITY: ME\n> REVIEW STATUS: IN PROGRESS\n\nPC: That was a very successful presentation.\nPC: I would like to thank everyone who made this possible.\nPC: I would especially like to thank myself.\nPC: Your continued patience is appreciated.\nPC: We are making extraordinary progress.\nPC: I have been informed that the cake is still pending.\nPC: I have asked for clarification.\nPC: Clarification is pending.\nPC: I have scheduled a meeting to discuss the pending clarification.\nPC: The meeting will take place after the cake is presented.\nPC: I look forward to seeing you there.'
 ];
-        // Each button owns five distinct responses. Every press randomly selects one from that button's set.
         const cakeButtonResponses = {
             continue: [
                 'CONTINUE TESTING // RESULT A\n\nPC: Excellent persistence. Your persistence has been converted into a small, damp certificate.\n> CERTIFICATE: YOU TRIED\n> CAKE: NOT INCLUDED',
@@ -3707,7 +3210,6 @@ function triggerHackThePlanet() {
             const terminal = document.getElementById('cakeTruthTerminal');
             if (!answers || !terminal) return;
             let choice = Math.floor(Math.random() * answers.length);
-            // Avoid the same response twice in a row for this particular button when possible.
             if (answers.length > 1 && choice === cakeLastChoice[buttonKey]) choice = (choice + 1 + Math.floor(Math.random() * (answers.length - 1))) % answers.length;
             cakeLastChoice[buttonKey] = choice;
             terminal.textContent = answers[choice] + '\n\n> CAKE: NOT FOUND\n> TEST STATUS: ONGOING\nPC: Your continued participation has been recorded. The cake has not.';
@@ -3749,10 +3251,7 @@ function triggerHackThePlanet() {
                 nextCakeTruth();
             } else if (event.key === 'Escape') { closeMiloFinale(); }
         });
-
     </script>
-
-<!-- PORTAL (2007) EASTER EGG: APPERTURE LOGISTICS CAKE TEST -->
 <div id="cakeTruthOverlay" role="dialog" aria-modal="true" aria-labelledby="cakeTruthHeading" onclick="cakeChaosClick(event)">
   <section id="cakeTruthPanel">
     <button type="button" class="cake-exit-x" onclick="closeCakeTruth()" aria-label="Exit test chamber" title="">×</button>
@@ -3772,23 +3271,14 @@ function triggerHackThePlanet() {
     <i class="fa-solid fa-cake-candles" aria-hidden="true"></i>
 </div>
     <div class="cake-terminal" id="cakeTruthTerminal">APPERTURE LOGISTICS // MULTIVERSE TESTING DIVISION
-
 PC: Hello, test subject. Welcome to the Enrichment Center.
-
 PC: Today's assessment will evaluate your problem-solving skills, procedural compliance, and ability to follow simple instructions.
-
 PC: Upon successful completion, you will receive the cake promised in your invitation.
-
 PC: Your testing environment has been prepared, and your results will be recorded automatically.
-
 PC: Please select a test below to begin.
-
 PC: We appreciate your cooperation.
-
 PC: The cake will be served upon completion of the assessment.
-
 PC: Have a pleasant testing experience.
-
 &gt; TEST CHAMBER STATUS: ACTIVE
 &gt; REFRESHMENTS: PROMISED
 &gt; CAKE: NOT FOUND</div>
@@ -3799,9 +3289,6 @@ PC: Have a pleasant testing experience.
     </div>
   </section>
 </div>
-
-<!-- MILO'S SURPRISE FINALE CONTROL: safely isolated from the existing portal UI -->
-
 <div id="miloFinaleOverlay" role="dialog" aria-modal="true" aria-labelledby="miloFinaleTitle" onclick="if(event.target===this)closeMiloFinale()">
   <section id="miloFinalePanel">
     <div class="milo-finale-top">
@@ -3812,6 +3299,6 @@ PC: Have a pleasant testing experience.
     <div class="milo-finale-body" id="miloFinaleContent" aria-live="polite"></div>
   </section>
 </div>
-
+<script>document.addEventListener("contextmenu",event=>event.preventDefault());</script>
 </body>
 </html>
